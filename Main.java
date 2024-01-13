@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
-
+import java.util.HashMap;
 public class Main {
 
     public static void main(String[] args) {
@@ -23,12 +23,33 @@ public class Main {
         double wallet = initialMoney;
         double timer = initialTime;
         
+
         System.out.println("Welcome to kool 5ara.");
         System.out.println("In your balance you have, "+ wallet + " and you have " + timer +" minutes to spend it on buying a new wardrobe");
         System.out.println("Please spend your money and time wisely to pick out the best wardrobe possible");
         System.out.println("press 1 to start and good luck player");
 
         Integer start = scanner.nextInt();
+
+        //an array with all the stores
+        
+        stuff.sortByRating();
+        Store[] allStores = stuff.getStores();
+        stuff.updateStore("storanme");
+        for (int i=0;i<6;i++){
+            System.out.println(allStores[i].toString());
+            System.out.println(allStores[i].getRating());
+            System.out.println(allStores[i].toString());
+            
+            //
+            Store storeIwant = stuff.getStore("store name");
+            String[] clothes = storeIwant.getItemNames();
+            String[] prices = storeIwant.getPrices();
+
+           
+        }
+
+
 
         // Game loop
         while (start == 1 & timer > 0) {
@@ -79,6 +100,7 @@ public class Main {
         }
     }
 
+
     private static String listStores(string[] args){
         HandleStuff stuff = new HandleStuff();
         Scanner scanner = new Scanner(System.in);
@@ -101,3 +123,7 @@ public class Main {
     
 
 }
+
+}
+
+
