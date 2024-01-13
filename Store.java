@@ -12,10 +12,9 @@ class Store {
     String[] names;
     double[] prices;
     double[] clothesRatings;
-    public Store(String name, double distance, double time, double storeRating, String[] names, double[]prices, double[]clothesRatings) {
+    public Store(String name, double storeRating, String[] names, double[]prices, double[]clothesRatings) {
         this.name = name;
-        this.distance = distance;
-        this.time = time;
+        
         this.storeRating = storeRating;
         this.clothesRatings = clothesRatings;
         this.names = names;
