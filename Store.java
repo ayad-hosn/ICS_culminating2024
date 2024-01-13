@@ -1,18 +1,56 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 class Store {
     String name;
     double distance;
     double time;
-    double rating;
-    List<ClothingItem> items;
-
-    public Store(String name, double distance, double time, double rating) {
+    double storeRating;
+    
+    HashMap<String, double[]> clothes = new HashMap<>();
+    String[] names;
+    double[] prices;
+    double[] clothesRatings;
+    public Store(String name, double distance, double time, double storeRating, String[] names, double[]prices, double[]clothesRatings) {
         this.name = name;
         this.distance = distance;
         this.time = time;
-        this.rating = rating;
-        this.items = new ArrayList<>();
+        this.storeRating = storeRating;
+        this.clothesRatings = clothesRatings;
+        this.names = names;
+        this.prices = prices;
+        buildHashMap();
+    }
+
+
+    public void buildHashMap(){
+        int size = names.length;
+        for (int i=0;i<size;i++){
+            clothes.put(names[i], new double[]{clothesRatings[i],prices[i]});
+        }
+
+    }
+
+    public double getTime(){
+        return time;
+    }
+
+
+    public double getDistance(){
+        return distance;
+    }
+
+    public void setTime(double time){
+        this.time = time;
+    }
+
+    public void setDistance(double distance){
+        this.distance = distance;
+    }
+
+
+    public double getRating(){
+        return storeRating;
     }
 }

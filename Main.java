@@ -31,7 +31,7 @@ public class Main {
         double wallet = initialMoney;
         double timer = initialTime;
         List<ClothingItem> closet = new ArrayList<>();
-
+        
         // Game loop
         while (timer > 0) {
             // Display available stores, let the user choose a store, and navigate

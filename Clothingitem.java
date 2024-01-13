@@ -1,11 +1,9 @@
-class ClothingItem {
+class HandleStuff {
     String type;
     double price;
     double rating;
 
-    public ClothingItem(String type, double price, double rating) {
-        this.type = type;
-        this.price = price;
-        this.rating = rating;
+    public HandleStuff() {
+        Store store1 = new Store(type, price, price, rating)
     }
 }
