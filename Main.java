@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
@@ -48,7 +49,8 @@ public class Main {
             timer -= timeSpent;
 
             // Update user's closet
-            closet.addAll(selectedItems);
+            writeClosetToFile(selectedItems);
+
 
             // Continue the game loop or end the game when the user decides
         }
@@ -66,4 +68,17 @@ public class Main {
         // Return the calculated score
         return 0; // Placeholder, replace with the actual calculation
     }
+    
+    private static void writeClosetToFile(List<ClothingItem> selectedItems) {
+        try (FileWriter writer = new FileWriter("my_closet.txt", true)) {
+            for (ClothingItem item : selectedItems) {
+                // Writing each item to the file
+                writer.write(String.format("%s %.2f %.2f%n", item.type, item.price, item.rating));
+            }
+            System.out.println("Selected items written to my_closet.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

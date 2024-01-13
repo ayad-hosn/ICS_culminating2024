@@ -1,7 +1,6 @@
 import java.util.List;
 import java.util.ArrayList;
 
-
 class Store {
     String name;
     double distance;
