@@ -43,7 +43,7 @@ public class Main {
             int choice = scanner.nextInt();
 
             // Implement navigation and shopping logic here...
-
+                
             // Update user's wallet and timer
             wallet -= costOfSelectedItems;
             timer -= timeSpent;
