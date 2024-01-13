@@ -12,6 +12,7 @@ class Store {
     String[] names;
     double[] prices;
     double[] clothesRatings;
+    Graph graph = new Graph();
     public Store(String name, double storeRating, String[] names, double[]prices, double[]clothesRatings) {
         this.name = name;
         
