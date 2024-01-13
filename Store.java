@@ -53,4 +53,9 @@ class Store {
     public double getRating(){
         return storeRating;
     }
+
+    @Override
+    public String toString(){
+        return name;
+    }
 }
