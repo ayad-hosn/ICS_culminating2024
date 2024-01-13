@@ -41,6 +41,18 @@ class Store {
         return distance;
     }
 
+    public String[] getItemNames(){
+        return names;
+    }
+
+    public double[] getPrices(){
+        return prices;
+    }
+
+    public double[] clothesRatings(){
+        return clothesRatings;
+    }
+
     public void setTime(double time){
         this.time = time;
     }
@@ -58,4 +70,7 @@ class Store {
     public String toString(){
         return name;
     }
+
+
+     
 }

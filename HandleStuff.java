@@ -6,7 +6,8 @@ class HandleStuff {
     double rating;
     Store[] stores;
     String currStop = "home";
-    HashMap<String, Store> storeNames = new HashMap<>();
+    HashMap<Integer, Store> storeNames = new HashMap<>();
+    
     public HandleStuff() {
         Store store1 = new Store("hello", 1, new String[]{"a", "b"}, new double[]{1, 2},new double[]{1, 2});
         Store store2 = new Store("hello", 1, new String[]{"a", "b"}, new double[]{1, 2},new double[]{1, 2});
@@ -16,12 +17,12 @@ class HandleStuff {
         Store store6 = new Store("hello", 1, new String[]{"a", "b"}, new double[]{1, 2},new double[]{1, 2});
         stores = new Store[]{store1, store2, store3, store4, store5, store6};
 
-        storeNames.put("hello", store1);
-        storeNames.put("hello", store2);
-        storeNames.put("hello", store3);
-        storeNames.put("hello", store4);
-        storeNames.put("hello", store5);
-        storeNames.put("hello", store6);
+        storeNames.put(1, store1);
+        storeNames.put(2, store2);
+        storeNames.put(3, store3);
+        storeNames.put(4, store4);
+        storeNames.put(5, store5);
+        storeNames.put(6, store6);
 
     }
 
@@ -32,8 +33,8 @@ class HandleStuff {
     
         
 
-    public Store getStore(String name){
-        return storeNames.get(name);
+    public Store getStore(int storeNum){
+        return storeNames.get(storeNum);
     }
 
 
@@ -89,6 +90,10 @@ class HandleStuff {
 
     public Store[] getStores(){
         return stores;
+    }
+
+    public String getCurrentStore(){
+        return currStop;
     }
 
 
