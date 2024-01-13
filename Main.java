@@ -5,45 +5,36 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Main {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        HandleStuff stuff = new HandleStuff();
+
         // User Initialization
         System.out.println("Enter initial money: ");
         double initialMoney = scanner.nextDouble();
 
         System.out.println("Enter initial time: ");
         double initialTime = scanner.nextDouble();
-        //user selects store
-        stuff.updateStore("nameofstore");
-        
-        stuff.sortByRating();
-        //get all stores
-        stuff.getStores();
-        stuff.getStore("null");
-        
+
         double costOfSelectedItems = 0; // Initialize to calculate in the loop
         double timeSpent = 0; // Initialize to calculate in the loop
-
-        List<ClothingItem> selectedItems = new ArrayList<>();
-
-        // Store initialization (Add your stores and items here)
-        Store storeA = new Store("Store A", 2, 5, 4.5);
-        storeA.items.add(new ClothingItem("Shirt", 20, 4.5));
-        storeA.items.add(new ClothingItem("Pants", 30, 4.0));
-
-        // Add more stores and items...
 
         // User initialization
         double wallet = initialMoney;
         double timer = initialTime;
-        List<ClothingItem> closet = new ArrayList<>();
         
+        System.out.println("Welcome to kool 5ara.");
+        System.out.println("In your balance you have, "+ wallet + " and you have " + timer +" minutes to spend it on buying a new wardrobe");
+        System.out.println("Please spend your money and time wisely to pick out the best wardrobe possible");
+        System.out.println("press 1 to start and good luck player");
+
+        Integer start = scanner.nextInt();
+
         // Game loop
-        while (timer > 0) {
-            // Display available stores, let the user choose a store, and navigate
-            System.out.println("Available Stores: ");
-            System.out.println("1. " + storeA.name);
+        while (start == 1 & timer > 0) {
+            
+            
+            
             // Display more stores...
 
             System.out.println("Choose a store: ");
@@ -64,7 +55,7 @@ public class Main {
 
         // Calculate and display the user's score
         double score = calculateScore(closet, timer, wallet);
-        System.out.println("Game Over! Your Score: " + score);
+        System.out.println("Bye Bye! Your Score: " + score);
 
         // Log user's closet and score to a text file (implement file I/O)
     }
@@ -87,5 +78,26 @@ public class Main {
             e.printStackTrace();
         }
     }
+
+    private static String listStores(string[] args){
+        HandleStuff stuff = new HandleStuff();
+        Scanner scanner = new Scanner(System.in);
+
+
+        Store[] allStores = stuff.getStores();
+        System.out.println("these are all the stores");
+        
+        for(int i=0; i<6; i++){
+            System.out.println(i + ") " +allStores[i].toString() + allStores[i].getRating() + allStores[i].getDistance());
+        }
+
+        System.out.println("pick the number of the store you want\n");
+        Integer pick = scanner.nextInt();
+        System.out.println(allStores[pick]);
+        
+        
+    }
+
+    
 
 }
