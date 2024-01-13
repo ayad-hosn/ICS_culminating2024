@@ -7,14 +7,21 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
+        HandleStuff stuff = new HandleStuff();
         // User Initialization
         System.out.println("Enter initial money: ");
         double initialMoney = scanner.nextDouble();
 
         System.out.println("Enter initial time: ");
         double initialTime = scanner.nextDouble();
-
+        //user selects store
+        stuff.updateStore("nameofstore");
+        
+        stuff.sortByRating();
+        //get all stores
+        stuff.getStores();
+        stuff.getStore("null");
+        
         double costOfSelectedItems = 0; // Initialize to calculate in the loop
         double timeSpent = 0; // Initialize to calculate in the loop
 
