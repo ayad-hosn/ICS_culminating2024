@@ -6,7 +6,7 @@ public class ImageLoader {
 
     
     public void openImage() throws Exception {
-        File file = new File("./Graph.png");
+        File file = new File("./Images/Graph.png");
         BufferedImage image = ImageIO.read(file);
     }
 }

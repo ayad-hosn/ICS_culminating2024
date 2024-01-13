@@ -28,6 +28,8 @@ class HandleStuff {
     public void updateStore(String name){
         currStop = name;
     }
+
+    
         
 
     public Store getStore(String name){
@@ -38,15 +40,51 @@ class HandleStuff {
     
 
     public void sortByDistance(){
-        System.out.println("hello");
-    }
+        int storesNum = 6;
+        for (int i = 0; i < storesNum - 1; i++){
+            for (int j = 0; j < storesNum - i - 1; j++){
+                
+                
+                if (stores[j].getDistance() > stores[j + 1].getDistance()) {
+                        // Swap temp and arr[i]
+                        Store temp = stores[j];
+                        stores[j] = stores[j + 1];
+                        stores[j + 1] = temp;
+                }
+            }
+        }
+    }   
 
     public void sortByTime(){
-        System.out.println("hello");
+        int storesNum = 6;
+        for (int i = 0; i < storesNum - 1; i++){
+            for (int j = 0; j < storesNum - i - 1; j++){
+                
+                
+                if (stores[j].getTime() > stores[j + 1].getTime()) {
+                        // Swap temp and arr[i]
+                        Store temp = stores[j];
+                        stores[j] = stores[j + 1];
+                        stores[j + 1] = temp;
+                }
+            }
+        }
     }
     
     public void sortByRating(){
-        System.out.println("hello");
+        int storesNum = 6;
+        for (int i = 0; i < storesNum - 1; i++){
+            for (int j = 0; j < storesNum - i - 1; j++){
+                
+                
+                if (stores[j].getRating() > stores[j + 1].getRating()) {
+                        // Swap temp and arr[i]
+                        Store temp = stores[j];
+                        stores[j] = stores[j + 1];
+                        stores[j + 1] = temp;
+                }
+            }
+        }
     }
 
     public Store[] getStores(){
