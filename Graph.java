@@ -68,5 +68,15 @@ public class Graph {
         
     }
 
+    public double homeDistance(){
+        return distances.get("home");
+    }
+
+    public double homeTime(){
+        return times.get("home");
+    }
+
+    
+
     
 }

@@ -35,7 +35,8 @@ public class Main {
         // Game loop
         while (start == 1 & timer > 0) {
             
-            
+            Store store = new Store(null, timer, args, null, null);
+            String[] names = store.getItemNames();
             
             // Display more stores...
 
