@@ -3,8 +3,10 @@ import java.io.File;
 import javax.imageio.ImageIO;
 
 public class ImageLoader {
-    public static void main(String[] args) throws Exception {
-        File file = new File("untitled.png");
+
+    
+    public void openImage() throws Exception {
+        File file = new File("./Graph.png");
         BufferedImage image = ImageIO.read(file);
         int width = image.getWidth();
         int height = image.getHeight();
