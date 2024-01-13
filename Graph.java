@@ -9,26 +9,24 @@ public class Graph {
 
     public Graph(){
         System.out.println("hello");
-
-        distances.put("stroe1", Integer.MAX_VALUE);
-        distances.put("stroe1", Integer.MAX_VALUE);
-        distances.put("stroe1", Integer.MAX_VALUE);
-        distances.put("stroe1", Integer.MAX_VALUE);
-        distances.put("stroe1", Integer.MAX_VALUE);
-        distances.put("stroe1", Integer.MAX_VALUE);
-        times.put("stroe1", Integer.MAX_VALUE);
-        times.put("stroe1", Integer.MAX_VALUE);
-        times.put("stroe1", Integer.MAX_VALUE);
-        times.put("stroe1", Integer.MAX_VALUE);
-        times.put("stroe1", Integer.MAX_VALUE);
-        times.put("stroe1", Integer.MAX_VALUE);
-        
-    
     }
 
     private void bellmanFord(String src) {
         
-        
+        distances.put("stroe1", Integer.MAX_VALUE);
+        distances.put("stroe1", Integer.MAX_VALUE);
+        distances.put("stroe1", Integer.MAX_VALUE);
+        distances.put("stroe1", Integer.MAX_VALUE);
+        distances.put("stroe1", Integer.MAX_VALUE);
+        distances.put("stroe1", Integer.MAX_VALUE);
+        times.put("stroe1", Integer.MAX_VALUE);
+        times.put("stroe1", Integer.MAX_VALUE);
+        times.put("stroe1", Integer.MAX_VALUE);
+        times.put("stroe1", Integer.MAX_VALUE);
+        times.put("stroe1", Integer.MAX_VALUE);
+        times.put("stroe1", Integer.MAX_VALUE);
+
+
         distances.put(src,0);
 
         for (int i = 1; i < 6; i++) {
@@ -58,16 +56,17 @@ public class Graph {
 
     
 
-    public void setData(Store start, Store end){
-        start.setDistance(getShortestDistance());
-        start.setTime(getShortestTime());
+    public void setData(Store start, Store[] allStores){
+        bellmanFord(start.toString());
+
+        for (int i=0;i<6;i++){
+            Store currStore = allStores[i];
+            currStore.setDistance(distances.get(currStore.toString()));
+            currStore.setTime(times.get(currStore.toString()));
+
+        }
+        
     }
 
-    public double getShortestDistance(){
-        return 1.0;
-    }
-
-    public double getShortestTime(){
-        return 1.0;
-    }
+    
 }
