@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
-
+import java.util.HashMap;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -39,6 +39,33 @@ public class Main {
         double timer = initialTime;
         List<ClothingItem> closet = new ArrayList<>();
         
+        //an array with all the stores
+        
+        stuff.sortByRating();
+        Store[] allStores = stuff.getStores();
+        stuff.updateStore("storanme");
+        for (int i=0;i<6;i++){
+            System.out.println(allStores[i].toString());
+            System.out.println(allStores[i].getRating());
+            System.out.println(allStores[i].toString());
+            
+            //
+            Store storeIwant = stuff.getStore("store name");
+            String[] clothes = storeIwant.getItemNames();
+            String[] prices = storeIwant.getPrices();
+
+           
+        }
+
+
+
+
+
+
+
+
+
+
         // Game loop
         while (timer > 0) {
             // Display available stores, let the user choose a store, and navigate
@@ -89,3 +116,6 @@ public class Main {
     }
 
 }
+
+
+
