@@ -30,7 +30,7 @@ public class Main {
         double initialTime = inp.nextDouble();
         timer = initialTime;
         initializeTimer(initialTime);
-
+        
         // Display user's initial balance
         System.out.println("\nIn your balance you have, "+ wallet + " dollars and you have " + timer +" minutes to spend it on buying a new wardrobe.");
         System.out.println("Please spend your money and time wisely to pick out the best wardrobe possible.");
