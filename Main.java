@@ -151,6 +151,13 @@ public class Main {
                 if(pick == 0){
                     System.out.println("1)by price\t2)by time\t3)by rating\t4)dont sort");
                     int sort = inp.nextInt();
+
+                    while (!(sort<4&&sort>0)){
+                        System.out.println("You entered a number out of bounds");
+                        System.out.println("1)by price\t2)by time\t3)by rating\t4)dont sort");
+                        sort = inp.nextInt();
+                    }
+
                     if(sort == 1){
                         stuff.sortByDistance();
                     }else if(sort == 2){
@@ -161,7 +168,7 @@ public class Main {
                 }
             }            
 
-            // Retrieve items, prices, and ratings for the selected store
+           // Retrieve items, prices, and ratings for the selected store
             items = allStores[pick-1].getItemNames();
             prices = allStores[pick-1].getPrices();
             ratings = allStores[pick-1].clothesRatings();
