@@ -45,6 +45,8 @@ public class Main {
             start = inp.nextInt();
         }
         System.out.println("congrats for finishing the game, your score is" + calculateScore()); 
+
+        //reset the text file closet.txt
         try (FileWriter writer = new FileWriter("my_closet.txt", false)) {
             // Writing nothing to truncate the file
         } catch (IOException e) {
@@ -58,7 +60,7 @@ public class Main {
 
         // Create a thread to decrement the timer every minute
         Thread timerThread = new Thread(() -> {
-            while (timer > 0) {
+            while (true) {
                 try {
                     // Sleep for one minute
                     Thread.sleep(60000);
@@ -75,42 +77,39 @@ public class Main {
 
     private static double calculateScore() {
         double totalRating = 0;
-        double totalCost = 0;
+        int itemCount = 0; // Track the number of items
 
         try (BufferedReader reader = new BufferedReader(new FileReader("my_closet.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(" ");
                 if (parts.length == 3) {
-                    double itemCost = Double.parseDouble(parts[1]);
                     double itemRating = Double.parseDouble(parts[2]);
-
                     totalRating += itemRating;
-                   // System.out.println("total rating: " + totalRating);
-                    totalCost += itemCost;
-                    //System.out.println("total cost: " +totalCost);
+                    itemCount++;
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        double avgRating = totalRating / totalCost;
-        double score = avgRating + timer + wallet;
+        double avgRating = (itemCount > 0) ? totalRating / itemCount : 0; // Avoid division by zero
+        double score = (avgRating / 2) + (wallet / 2);
         return score;
     }
     
     private static void writeClosetToFile(String name, double cost, double stars) {
         try (FileWriter writer = new FileWriter("my_closet.txt", true)) {
-            writer.write(name + " " + cost + " " + stars);
-            System.out.println("Selected items written to my_closet.txt");
+            writer.write(name + " " + cost + " " + stars + "\n");
+            System.out.println("\nSelected items written to my_closet.txt\n");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     private static void visitStores(){
-        System.out.println("these are all the stores:\n");
+        System.out.println("these are all the stores along with the costs to get there:\n");
+        System.out.println("number    store_name    price     time");
         int choice = 2;
         int pick = 0;
         String[] itemss = {};
@@ -166,7 +165,7 @@ public class Main {
         wallet = wallet - prices[buy-1];
         System.out.println("\nYou have bought " + items[buy-1] + ", and currently have " + wallet + " Dollars in your wallet");
 
-        System.out.println("Do you want to buy anything else from this store? \n1)yes         2)no");
+        System.out.println("Do you want to buy anything else from this store? \n1)yes\t\t2)no");
         buy2 = inp.nextInt(); 
 
         writeClosetToFile(items[buy-1], prices[buy-1], ratings[buy-1]);
