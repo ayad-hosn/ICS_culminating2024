@@ -98,7 +98,7 @@ public class Main {
         }
 
         double avgRating = (itemCount > 0) ? totalRating / itemCount : 0; // Avoid division by zero
-        double score = (avgRating / 2) + (wallet / 2);
+        double score = (avgRating / 3) + (wallet / 3) + (timer / 3);
         return score;
     }
 
@@ -126,6 +126,20 @@ public class Main {
             // List all available stores
             for(int i=0; i<6; i++){
                 System.out.println(i+1 + ") " +allStores[i].toString() + " "+allStores[i].getRating() + " "+allStores[i].getDistance() + " "+allStores[i].getTime());
+            }
+
+            System.out.println("would you like to sort the stores?\n1)yes\t\t2)no");
+            int sort = inp.nextInt();
+            if(sort == 1){
+                System.out.println("1)by distance\t2)by time\t3)by rating\t?)dont sort");
+                int sortMethod = inp.nextInt();
+                if(sortMethod == 1){
+                    stuff.sortByDistance();
+                }else if(sortMethod == 2){
+                    stuff.sortByTime();
+                }else if(sortMethod == 3){
+                    stuff.sortByRating();
+                }
             }
 
             // Let the user pick his store
