@@ -29,6 +29,7 @@ class HandleStuff extends Graph{
         storeNames.put("Shoe_Store      ", store4);
         storeNames.put("Underwear_Store ", store5);
 
+        setHome();
     }           
     /* Updates the current stop and 
     sets the data for the graph based on the store name 
