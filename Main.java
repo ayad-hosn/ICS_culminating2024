@@ -120,8 +120,7 @@ public class Main {
 
     // Display available stores and prompt user to choose
     private static void visitStores(){
-        displayStores();
-        
+       
         int choice = 2;
         int pick = 0;
         String[] items = {};
@@ -133,7 +132,7 @@ public class Main {
             while(pick == 0){
 
                 // List all available stores
-                
+                displayStores();
 
                 // Let the user pick his store
                 System.out.println("\nPick the number of the store you want\npress 0 if you want to sort the stores\n");
