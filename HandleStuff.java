@@ -28,7 +28,7 @@ class HandleStuff extends Graph{
         storeNames.put("Pants&Shirts    ", store3);
         storeNames.put("Shoe_Store      ", store4);
         storeNames.put("Underwear_Store ", store5);
-
+      
         setHome();
     }           
     /* Updates the current stop and 
@@ -120,7 +120,7 @@ class HandleStuff extends Graph{
             for (int j = 0; j < storesNum - i - 1; j++){
                 
                 
-                if (stores[j].getRating() > stores[j + 1].getRating()) {
+                if (stores[j].getRating() < stores[j + 1].getRating()) {
                         // Swap temp and arr[i]
                         Store temp = stores[j];
                         stores[j] = stores[j + 1];
