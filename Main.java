@@ -16,25 +16,26 @@ public class Main {
         // User Initialization
         ImageLoader image = new ImageLoader();
         image.openImage();
-        System.out.println("Enter initial money: ");
+
+        System.out.println("\nWelcome to ayad and mehir's gaym.");
+        System.out.println("this is a shopping game, you will be asked to pick an initial amount of time and money to start with");
+        System.out.println("as well as a recommended amount for each, (you should go over the recommended amount for a better experience");
+
+        System.out.println("\nEnter initial money(recommended 150): ");
         double initialMoney = inp.nextDouble();
         wallet = initialMoney;
 
-        System.out.println("Enter initial time: ");
+        System.out.println("Enter initial time(recommended 200): ");
         double initialTime = inp.nextDouble();
         timer = initialTime;
         initializeTimer(initialTime);
         
-        
-        
-
-        System.out.println("Welcome to kool 5ara.");
-        System.out.println("In your balance you have, "+ wallet + " and you have " + timer +" minutes to spend it on buying a new wardrobe");
+        System.out.println("\nIn your balance you have, "+ wallet + " dollars and you have " + timer +" minutes to spend it on buying a new wardrobe");
         System.out.println("Please spend your money and time wisely to pick out the best wardrobe possible");
         
         Integer start = 0;
         while(start != 1){
-            System.out.println("press 1 to start and good luck player");
+            System.out.println("\npress 1 to start and good luck player");
             start = inp.nextInt();
         }
         
@@ -45,6 +46,13 @@ public class Main {
         }
         System.out.println("congrats for finishing the game, your score is" + calculateScore()); 
 
+        //reset the text file closet.txt
+        try (FileWriter writer = new FileWriter("my_closet.txt", false)) {
+            // Writing nothing to truncate the file
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private static void initializeTimer(double initialTime) {
@@ -52,7 +60,7 @@ public class Main {
 
         // Create a thread to decrement the timer every minute
         Thread timerThread = new Thread(() -> {
-            while (timer > 0) {
+            while (true) {
                 try {
                     // Sleep for one minute
                     Thread.sleep(60000);
@@ -69,61 +77,63 @@ public class Main {
 
     private static double calculateScore() {
         double totalRating = 0;
-        double totalCost = 0;
+        int itemCount = 0; // Track the number of items
 
         try (BufferedReader reader = new BufferedReader(new FileReader("my_closet.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(" ");
                 if (parts.length == 3) {
-                    double itemCost = Double.parseDouble(parts[1]);
                     double itemRating = Double.parseDouble(parts[2]);
-
                     totalRating += itemRating;
-                    totalCost += itemCost;
+                    itemCount++;
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        double avgRating = totalRating / totalCost;
-        double score = avgRating + timer + wallet;
+        double avgRating = (itemCount > 0) ? totalRating / itemCount : 0; // Avoid division by zero
+        double score = (avgRating / 2) + (wallet / 2);
         return score;
     }
     
     private static void writeClosetToFile(String name, double cost, double stars) {
         try (FileWriter writer = new FileWriter("my_closet.txt", true)) {
-            writer.write(name + cost + stars);
-            System.out.println("Selected items written to my_closet.txt");
+            writer.write(name + " " + cost + " " + stars + "\n");
+            System.out.println("\nSelected items written to my_closet.txt\n");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     private static void visitStores(){
-        System.out.println("these are all the stores");
+        System.out.println("these are all the stores along with the costs to get there:\n");
+        System.out.println("number    store_name    price     time");
         int choice = 2;
         int pick = 0;
         String[] itemss = {};
         double[] pricess = {};
         double[] ratingss = {};
+
         while(choice == 2){
+
         // list all available stores
-        for(int i=0; i<6; i++){
+         for(int i=0; i<6; i++){
             System.out.println(i+1 + ") " +allStores[i].toString() + " "+allStores[i].getRating() + " "+allStores[i].getDistance() + " "+allStores[i].getTime());
         }
 
         // let the user pick his store
-        System.out.println("pick the number of the store you want(1-6)\n");
+        System.out.println("\npick the number of the store you want(1-6)\n");
 
         pick = inp.nextInt();
         itemss = allStores[pick-1].getItemNames();
         pricess = allStores[pick-1].getPrices();
         ratingss = allStores[pick-1].clothesRatings();
 
+        System.out.println("Here is a preview of the items at this store");
         for(int i=0 ; i < allStores[pick-1].getItemNames().length; i ++){
-            System.out.println(itemss[i] + pricess[i] + ratingss[i]);
+            System.out.println(i+1 + ") " +itemss[i] + " " +pricess[i]+ "Dollars " + ratingss[i] + "Stars");
         }
 
         // let the user pick if he wants to go there
@@ -132,8 +142,8 @@ public class Main {
         }
         stuff.updateStore(allStores[pick-1].toString());
 
-        wallet -= allStores[pick-1].getDistance();
-        timer -= allStores[pick-1].getTime();
+        wallet = wallet - allStores[pick-1].getDistance();
+        timer = timer - allStores[pick-1].getTime();
 
         checkout(itemss, pricess, ratingss);
     }
@@ -142,23 +152,23 @@ public class Main {
         int buy2 = 1;
 
         while(buy2 == 1){
-           
-        for(int i = 0; i < items.length; i ++){
-            System.out.println(i+1 + ") " + items[i] + prices[i] + ratings[i]);
-        }
+
+            System.out.println("\nbudget: "+wallet+"\ttime: " +timer);
+            System.out.println("\nWelcome to the store, here are the available items");
+            for(int i = 0; i < items.length; i ++){
+                System.out.println(i+1 + ") " + items[i] + " " + prices[i] + "Dollars " + ratings[i] + "Stars");
+            }
 
         System.out.println("\n pick the number of the item you want to buy");
         int buy = inp.nextInt();
         
-        wallet -= prices[buy-1];
-        System.out.println("you have bought" + items[buy-1] + " and currently have" + wallet + "in your wallet");
+        wallet = wallet - prices[buy-1];
+        System.out.println("\nYou have bought " + items[buy-1] + ", and currently have " + wallet + " Dollars in your wallet");
 
-        System.out.println("do you want to buy anything else from this store \n1)yes         2)no");
+        System.out.println("Do you want to buy anything else from this store? \n1)yes\t\t2)no");
         buy2 = inp.nextInt(); 
 
         writeClosetToFile(items[buy-1], prices[buy-1], ratings[buy-1]);
         }                  
     }
-
-
 }
