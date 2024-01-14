@@ -34,11 +34,11 @@ class HandleStuff {
     }
 
     public void setHome(){
-        graph.setData("home", stores);
+        graph.setData(stores);
         System.out.println("hello");
     }
 
-    
+
     public double homeDistance(){
         return graph.homeDistance();
     }
@@ -58,7 +58,7 @@ class HandleStuff {
     
 
     public void sortByDistance(){
-        int storesNum = 6;
+        int storesNum = 7;
         for (int i = 0; i < storesNum - 1; i++){
             for (int j = 0; j < storesNum - i - 1; j++){
                 

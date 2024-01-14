@@ -17,8 +17,8 @@ public class Graph {
         distanceEdges[5] = new Edge("Pants_And_Shirts", "High_Quality_Shirt", 3);
         distanceEdges[6] = new Edge("High_Quality_Pants", "High_Quality_Shirt", 6);
         distanceEdges[7] = new Edge("High_Quality_Shirt", "High_Quality_Pants", 6);
-        distanceEdges[8] = new Edge("Pants_And_Shirts", "High_Quality_Pants", 5);
-        distanceEdges[9] = new Edge("High_Quality_Pants", "Pants_And_Shirts", 5);
+        distanceEdges[8] = new Edge("High_Quality_Pants", "Underwear_Shirt_Store", 5);
+        distanceEdges[9] = new Edge("Underwear_Shirt_Store", "High_Quality_Pants", 5);
         distanceEdges[10] = new Edge("Pants_And_Shirts", "Shoe_Store", 2);
         distanceEdges[11] = new Edge("Shoe_Store", "Shoe_Store", 2);
         distanceEdges[12] = new Edge("Underwear_Shirt_Store", "Everything_Store", 3);
@@ -32,10 +32,10 @@ public class Graph {
         timeEdges[5] = new Edge("Pants_And_Shirts", "High_Quality_Shirt", 4);
         timeEdges[6] = new Edge("High_Quality_Pants", "High_Quality_Shirt", 2);
         timeEdges[7] = new Edge("High_Quality_Shirt", "High_Quality_Pants", 2);
-        timeEdges[8] = new Edge("Pants_And_Shirts", "High_Quality_Pants", 1);
-        timeEdges[9] = new Edge("High_Quality_Pants", "Pants_And_Shirts", 1);
+        timeEdges[8] = new Edge("High_Quality_Pants", "Underwear_Shirt_Store", 1);
+        timeEdges[9] = new Edge("Underwear_Shirt_Store", "High_Quality_Pants", 1);
         timeEdges[10] = new Edge("Pants_And_Shirts", "Shoe_Store", 9);
-        timeEdges[11] = new Edge("Shoe_Store", "Shoe_Store", 9);
+        timeEdges[11] = new Edge("Shoe_Store", "Pants_And_Shirts", 9);
         timeEdges[12] = new Edge("Underwear_Shirt_Store", "Everything_Store", 6);
         timeEdges[13] = new Edge("Everything_Store", "Underwear_Shirt_Store", 6);
         
@@ -60,26 +60,52 @@ public class Graph {
         times.put("Everything_Store", (double)Integer. MAX_VALUE);
 
         distances.put(src,0.0);
+        times.put(src, 0.0);
         
-        for (int i = 1; i < 6; i++) {
-            for (int j = 0; j < 7; j++) {
+        for (int i = 1; i < 7; i++) {
+            for (int j = 0; j < 14; j++) {
                 String u = distanceEdges[j].source;
                 String v = distanceEdges[j].destination;
                 double weight = distanceEdges[j].weight;
-                if (distances.get(u) != Integer.MAX_VALUE && distances.get(u) + weight < distances.get(v))
+                //System.out.println(weight);
+               // System.out.println(u);
+                
+
+                
+                if (distances.get(u) != Integer.MAX_VALUE && distances.get(u) + weight < distances.get(v)){
+                    
+                    
+                    
                     distances.put(v, distances.get(u) + weight);
+                }
+
+                
             }
         }
 
-        for (int i = 1; i < 6; i++) {
-            for (int j = 0; j < 7; j++) {
+
+        for (int i = 1; i < 7; i++) {
+            for (int j = 0; j < 14; j++) {
                 String u = timeEdges[j].source;
                 String v = timeEdges[j].destination;
                 double weight = timeEdges[j].weight;
-                if (times.get(u) != Integer.MAX_VALUE && times.get(u) + weight < times.get(v))
+                
+                
+                
+                
+                if (times.get(u) != Integer.MAX_VALUE && times.get(u) + weight < times.get(v)){
+                    
+                    
+                    
                     times.put(v, times.get(u) + weight);
+                }
+
+                
             }
         }
+
+        
+        
         
     }
     
@@ -96,12 +122,15 @@ public class Graph {
         
     }
 
-    public void setData(String start, Store[] allStores){
-        bellmanFord(start.toString());
-
+    public void setData(Store[] allStores){
+        bellmanFord("home");
+        
         for (int i=0;i<6;i++){
             Store currStore = allStores[i];
-            currStore.setDistance(distances.get(currStore.toString()));
+            
+            double currDistance = distances.get(currStore.toString());
+            
+            currStore.setDistance(currDistance);
             currStore.setTime(times.get(currStore.toString()));
 
         }
