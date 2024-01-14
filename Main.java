@@ -1,8 +1,8 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 public class Main {
     Scanner inp = new Scanner(System.in);
@@ -33,28 +33,43 @@ public class Main {
             start = inp.nextInt();
         }
         
-
         while(start == 1){
             visitStores();
-                        
-
-        } 
+            System.out.println("would you like to 1)buy anything else      2)go home");
+            start = inp.nextInt();
+        }
+        System.out.println("congrats for finishing the game, your score is" + calculateScore()); 
 
     }
 
-    private static double calculateScore(List<ClothingItem> closet, double timeLeft, double moneyLeft) {
-        // Implement the scoring formula here
-        // [(2 * rating of shirt) + (2 * rating of pants) + ...] / 5 + timeLeft * 0.5 + moneyLeft
-        // Return the calculated score
-        return 0; // Placeholder, replace with the actual calculation
+    private double calculateScore() {
+        double totalRating = 0;
+        double totalCost = 0;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("my_closet.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(" ");
+                if (parts.length == 3) {
+                    double itemCost = Double.parseDouble(parts[1]);
+                    double itemRating = Double.parseDouble(parts[2]);
+
+                    totalRating += itemRating;
+                    totalCost += itemCost;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        double avgRating = totalRating / totalCost;
+        double score = avgRating + timer + wallet;
+        return score;
     }
     
-    private static void writeClosetToFile(List<ClothingItem> selectedItems) {
+    private static void writeClosetToFile(String name, double cost, double stars) {
         try (FileWriter writer = new FileWriter("my_closet.txt", true)) {
-            for (ClothingItem item : selectedItems) {
-                // Writing each item to the file
-                writer.write(String.format("%s %.2f %.2f%n", item.type, item.price, item.rating));
-            }
+            writer.write(name + cost + stars);
             System.out.println("Selected items written to my_closet.txt");
         } catch (IOException e) {
             e.printStackTrace();
@@ -65,9 +80,9 @@ public class Main {
         System.out.println("these are all the stores");
         int choice = 2;
         int pick = 0;
-        String[] itemss;
-        double[] pricess;
-        double[] ratingss;
+        String[] itemss = {};
+        double[] pricess = {};
+        double[] ratingss = {};
         while(choice == 2){
         // list all available stores
         for(int i=0; i<6; i++){
@@ -94,17 +109,30 @@ public class Main {
 
         wallet -= allStores[pick-1].getDistance();
         timer -= allStores[pick-1].getTime();
+
         checkout(itemss, pricess, ratingss);
     }
 
     private void checkout(String[] items, double[] prices, double[] ratings){
+        int buy2 = 1;
+
+        while(buy2 == 1){
+           
         for(int i = 0; i < items.length; i ++){
-            System.out.println(items[i] + prices[i] + ratings[i]);
+            System.out.println(i+1 + ") " + items[i] + prices[i] + ratings[i]);
         }
 
-        System.out.println("\n ")
+        System.out.println("\n pick the number of the item you want to buy");
+        int buy = inp.nextInt();
+        
+        wallet -= prices[buy-1];
+        System.out.println("you have bought" + items[buy-1] + " and currently have" + wallet + "in your wallet");
 
-                
+        System.out.println("do you want to buy anything else from this store \n1)yes         2)no");
+        buy2 = inp.nextInt(); 
+
+        writeClosetToFile(items[buy-1], prices[buy-1], ratings[buy-1]);
+        }                  
     }
 
 
