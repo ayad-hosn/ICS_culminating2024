@@ -9,6 +9,7 @@ class HandleStuff {
     HashMap<String, Store> storeNames = new HashMap<>();
     Graph graph = new Graph();
     public HandleStuff() {
+        //name, storerating, names, prices, clothes rating
         Store store1 = new Store("hello", 1, new String[]{"a", "b"}, new double[]{1, 2},new double[]{1, 2});
         Store store2 = new Store("hello", 1, new String[]{"a", "b"}, new double[]{1, 2},new double[]{1, 2});
         Store store3 = new Store("hello", 1, new String[]{"a", "b"}, new double[]{1, 2},new double[]{1, 2});
