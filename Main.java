@@ -14,8 +14,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         // User Initialization
-        ImageLoader image = new ImageLoader();
-        image.openImage();
+        
 
         System.out.println("\nWelcome to ayad and mehir's gaym.");
         System.out.println("This is a shopping game. You will be asked to pick an initial amount of time and money to start with,");
