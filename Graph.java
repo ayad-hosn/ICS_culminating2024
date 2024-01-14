@@ -49,11 +49,7 @@ public class Graph {
             }
         }
         
-
-        
     }
-
-
     
 
     public void setData(Store start, Store[] allStores){
