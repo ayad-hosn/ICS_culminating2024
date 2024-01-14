@@ -1,3 +1,0 @@
-boxer_briefs 15.0 4.0
-jeans 40.0 4.0
-briefs 18.0 3.5

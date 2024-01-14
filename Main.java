@@ -174,9 +174,9 @@ public class Main {
             ratings = allStores[pick-1].clothesRatings();
 
             // Display a preview of the items at the selected store
-            System.out.println("Here is a preview of the items at this store:");
-            for(int i=0; i < allStores[pick-1].getItemNames().length; i++){
-                System.out.println(i+1 + ") " + items[i] + " " + prices[i] + " Dollars " + ratings[i] + " Stars");
+            System.out.println("number\titem\t\tprice\t\trating");
+            for(int i = 0; i < items.length; i++){
+                System.out.println(i+1 + ")\t" + items[i] + "\t" + prices[i] + " Dollars\t" + ratings[i] + " Stars");
             }
 
             // Let the user decide if they want to go to the store or pick another store
@@ -184,18 +184,18 @@ public class Main {
             choice = inp.nextInt();
             while (choice>2||choice<1){
                 System.out.println("You selected a number out of bounds");
-                System.out.println("1)Go to the store    2)Pick another store"); 
+                System.out.println("\n1)Go to the store    2)Pick another store"); 
                 choice = inp.nextInt();
             } 
             
         }
 
         // Update the selected store and deduct money and time
-        String hello = allStores[pick-1].toString();
-        stuff.updateStore(allStores[pick-1].toString());
+        
         wallet -= allStores[pick-1].getDistance();
         timer -= allStores[pick-1].getTime();
-
+        stuff.updateStore(allStores[pick-1].toString());
+        
         // Proceed to checkout
         checkout(items, prices, ratings);
     }
@@ -206,9 +206,11 @@ public class Main {
 
         while(buy2 == 1){
             System.out.println("\nBudget: "+ wallet + "\tTime: " + timer);
-            System.out.println("\nWelcome to the store! Here are the available items:");
+            System.out.println("\nWelcome to the store! Here are the available items:\n");
+
+            System.out.println("number\titem\t\tprice\t\trating");
             for(int i = 0; i < items.length; i++){
-                System.out.println(i+1 + ") " + items[i] + " " + prices[i] + " Dollars " + ratings[i] + " Stars");
+                System.out.println(i+1 + ")\t" + items[i] + "\t" + prices[i] + " Dollars\t" + ratings[i] + " Stars");
             }
 
             // Let the user pick the number of the item they want to buy

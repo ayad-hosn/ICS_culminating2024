@@ -18,9 +18,9 @@ class HandleStuff extends Graph{
         Store store1 = new Store("Quality_Shirts  ", 4.2, new String[]{"black_shirt", "White_shirt", "Pink_shirt", "Green_shirt", "Orange_shirt"}, new double[]{30, 20, 30, 20, 15},new double[]{5, 5, 4, 4, 3});
         Store store2 = new Store("Quality_pants   ", 4.1, new String[]{"short_pants","long_pants","black_jeans","blue_jeans","sweatpants"}, new double[]{30, 20, 30, 20, 15},new double[]{5, 4.5, 4, 4, 3});
         Store store3 = new Store("Pants&Shirts    ", 3.5, new String[]{"adidas_pants","puma_pants","nike_pants", "adidas_shirt", "puma_shirt", "nike_shirt"}, new double[]{25, 20, 20, 20, 17, 14},new double[]{4, 3.5, 2.5, 4, 3.5, 2.5});
-        Store store4 = new Store("Shoe_Store      ", 3.8, new String[]{"running_shoes", "sneakers", "formal_shoes", "slippers", "sandals"}, new double[]{50, 40, 60, 25, 20}, new double[]{4.5, 4, 4.8, 3.5, 3});
-        Store store5 = new Store("Underwear_Store ", 3.7, new String[]{"boxer_briefs", "briefs", "boxers", "v-neck_shirt", "crew_neck_shirt", "polo_shirt"}, new double[]{15, 18, 20, 25, 30, 35}, new double[]{4, 3.5, 3.8, 3.9, 4.2, 4.5});
-        Store store6 = new Store("Everything_Store", 3.0, new String[]{"jeans", "chinos", "t-shirt", "polo_shirt", "sneakers", "loafers", "boxer_briefs", "briefs"}, new double[]{40, 30, 20, 25, 50, 60, 15, 18}, new double[]{4, 3.5, 3.8, 3.9, 4.5, 4.2, 4, 3.5});
+        Store store4 = new Store("Shoe_Store      ", 3.8, new String[]{"running_shoes", "sneakers", "formal_shoes", "slippers", "sandals "}, new double[]{50, 40, 60, 25, 20}, new double[]{4.5, 4, 4.8, 3.5, 3});
+        Store store5 = new Store("Underwear_Store ", 3.7, new String[]{"boxer_briefs", "briefs  ", "boxers  ", "v-neck_shirt", "crew_neck_shirt", "polo_shirt"}, new double[]{15, 18, 20, 25, 30, 35}, new double[]{4, 3.5, 3.8, 3.9, 4.2, 4.5});
+        Store store6 = new Store("Everything_Store", 3.0, new String[]{"jeans\t", "chinos\t", "t-shirt\t", "polo_shirt", "sneakers", "loafers\t", "boxer_briefs", "briefs\t"}, new double[]{40, 30, 20, 25, 50, 60, 15, 18}, new double[]{4, 3.5, 3.8, 3.9, 4.5, 4.2, 4, 3.5});
         //initialize the array with all the stores we just created
         stores = new Store[]{store1, store2, store3, store4, store5, store6};
         storeNames.put("Quality_Shirts  ", store1);
