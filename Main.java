@@ -5,14 +5,14 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class Main {
-    Scanner inp = new Scanner(System.in);
-    HandleStuff stuff = new HandleStuff();
-    Store[] allStores = stuff.getStores();
+    static Scanner inp = new Scanner(System.in);
+    static HandleStuff stuff = new HandleStuff();
+    static Store[] allStores = stuff.getStores();
 
-    double timer;
-    double wallet;
+    static double timer;
+    static double wallet;
 
-    public void main(String[] args) {
+    public static void main(String[] args) {
         // User Initialization
         System.out.println("Enter initial money: ");
         double initialMoney = inp.nextDouble();
@@ -42,7 +42,7 @@ public class Main {
 
     }
 
-    private double calculateScore() {
+    private static double calculateScore() {
         double totalRating = 0;
         double totalCost = 0;
 
@@ -76,7 +76,7 @@ public class Main {
         }
     }
 
-    private void visitStores(){
+    private static void visitStores(){
         System.out.println("these are all the stores");
         int choice = 2;
         int pick = 0;
@@ -113,7 +113,7 @@ public class Main {
         checkout(itemss, pricess, ratingss);
     }
 
-    private void checkout(String[] items, double[] prices, double[] ratings){
+    private static void checkout(String[] items, double[] prices, double[] ratings){
         int buy2 = 1;
 
         while(buy2 == 1){
