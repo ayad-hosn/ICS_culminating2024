@@ -123,7 +123,7 @@ public class Main {
         double[] ratingss = {};
 
         while(choice == 2){
-
+            pick = 0;
             while(pick == 0){
 
                 // List all available stores
@@ -138,7 +138,7 @@ public class Main {
 
         
                 if(pick == 0){
-                    System.out.println("1)by distance\t2)by time\t3)by rating\t4)dont sort");
+                    System.out.println("1)by price\t2)by time\t3)by rating\t4)dont sort");
                     int sort = inp.nextInt();
                     if(sort == 1){
                         stuff.sortByDistance();
@@ -201,10 +201,6 @@ public class Main {
             // Write the purchased item to the closet file
             writeClosetToFile(items[buy-1], prices[buy-1], ratings[buy-1]);
         }                  
-    }
-
-    public static void trySort(){
-        
     }
 
 }
