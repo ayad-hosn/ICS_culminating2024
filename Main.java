@@ -191,6 +191,7 @@ public class Main {
         }
 
         // Update the selected store and deduct money and time
+        String hello = allStores[pick-1].toString();
         stuff.updateStore(allStores[pick-1].toString());
         wallet -= allStores[pick-1].getDistance();
         timer -= allStores[pick-1].getTime();

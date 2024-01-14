@@ -28,7 +28,7 @@ class HandleStuff extends Graph{
         storeNames.put("Pants&Shirts    ", store3);
         storeNames.put("Shoe_Store      ", store4);
         storeNames.put("Underwear_Store ", store5);
-      
+        storeNames.put("Everything_Store", store6);
         setHome();
     }           
     /* Updates the current stop and 
