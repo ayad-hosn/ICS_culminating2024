@@ -98,7 +98,7 @@ public class Main {
         }
 
         double avgRating = (itemCount > 0) ? totalRating / itemCount : 0; // Avoid division by zero
-        double score = (avgRating / 2) + (wallet / 2);
+        double score = (avgRating / 3) + (wallet / 3) + (timer / 3);
         return score;
     }
 
@@ -115,7 +115,7 @@ public class Main {
     // Display available stores and prompt user to choose
     private static void visitStores(){
         System.out.println("These are all the stores along with the costs to get there:\n");
-        System.out.println("Number    Store_Name    Price     Time");
+        
         int choice = 2;
         int pick = 0;
         String[] itemss = {};
@@ -123,15 +123,33 @@ public class Main {
         double[] ratingss = {};
 
         while(choice == 2){
-            // List all available stores
-            for(int i=0; i<6; i++){
-                System.out.println(i+1 + ") " +allStores[i].toString() + " "+allStores[i].getRating() + " "+allStores[i].getDistance() + " "+allStores[i].getTime());
-            }
 
-            // Let the user pick his store
-            System.out.println("\nPick the number of the store you want (1-6)\n");
+            while(pick == 0){
 
-            pick = inp.nextInt();
+                // List all available stores
+                System.out.println("Number\tStore_Name\t\tRating\tPrice\tTime");
+                for(int i=0; i<6; i++){
+                    System.out.println(i+1 + ")\t" +allStores[i].toString() + "\t"+allStores[i].getRating() + "\t"+allStores[i].getDistance() + "\t"+allStores[i].getTime());
+                }
+
+                // Let the user pick his store
+                System.out.println("\nPick the number of the store you want\npress 0 if you want to sort the stores\n");
+                pick = inp.nextInt();
+
+        
+                if(pick == 0){
+                    System.out.println("1)by distance\t2)by time\t3)by rating\t4)dont sort");
+                    int sort = inp.nextInt();
+                    if(sort == 1){
+                        stuff.sortByDistance();
+                    }else if(sort == 2){
+                        stuff.sortByTime();
+                    }else if(sort == 3){
+                        stuff.sortByRating();
+                    }
+                }
+            }            
+
             // Retrieve items, prices, and ratings for the selected store
             itemss = allStores[pick-1].getItemNames();
             pricess = allStores[pick-1].getPrices();
@@ -144,7 +162,7 @@ public class Main {
             }
 
             // Let the user decide if they want to go to the store or pick another store
-            System.out.println("1) Go to the store    2) Pick another store");  
+            System.out.println("1)Go to the store    2)Pick another store");  
             choice = inp.nextInt();
         }
 
@@ -184,4 +202,9 @@ public class Main {
             writeClosetToFile(items[buy-1], prices[buy-1], ratings[buy-1]);
         }                  
     }
+
+    public static void trySort(){
+        
+    }
+
 }
