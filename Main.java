@@ -88,7 +88,7 @@ public class Main {
         while(choice == 2){
         // list all available stores
         for(int i=0; i<6; i++){
-            System.out.println(i+1 + ") " +allStores[i].toString() + allStores[i].getRating() + allStores[i].getDistance() + allStores[i].getTime());
+            System.out.println(i+1 + ") " +allStores[i].toString() + " "+allStores[i].getRating() + " "+allStores[i].getDistance() + " "+allStores[i].getTime());
         }
 
         // let the user pick his store

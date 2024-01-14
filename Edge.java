@@ -1,8 +1,8 @@
 public class Edge {
     String source, destination;
-    int weight;
+    double weight;
 
-    public Edge(String source, String destination, int weight) {
+    public Edge(String source, String destination, double weight) {
         this.source = source;
         this.destination = destination;
         this.weight = weight;

@@ -9,5 +9,4 @@ public class ImageLoader {
         File file = new File("./Images/Graph.png");
         BufferedImage image = ImageIO.read(file);
     }
-    
 }
