@@ -111,31 +111,44 @@ public class Main {
             e.printStackTrace();
         }
     }
+    public static void displayStores(){
+        System.out.println("These are all the stores along with the costs to get there:\n");
+        System.out.println("Number\tStore_Name\t\tRating\tPrice\tTime");
+        for(int i=0; i<6; i++){
+            System.out.println(i+1 + ")\t" +allStores[i].toString() + "\t"+allStores[i].getRating() + "\t"+allStores[i].getDistance() + "\t"+allStores[i].getTime());
+        }
+    }
 
     // Display available stores and prompt user to choose
     private static void visitStores(){
-        System.out.println("These are all the stores along with the costs to get there:\n");
+        displayStores();
         
         int choice = 2;
         int pick = 0;
-        String[] itemss = {};
-        double[] pricess = {};
-        double[] ratingss = {};
+        String[] items = {};
+        double[] prices = {};
+        double[] ratings = {};
 
         while(choice == 2){
             pick = 0;
             while(pick == 0){
 
                 // List all available stores
-                System.out.println("Number\tStore_Name\t\tRating\tPrice\tTime");
-                for(int i=0; i<6; i++){
-                    System.out.println(i+1 + ")\t" +allStores[i].toString() + "\t"+allStores[i].getRating() + "\t"+allStores[i].getDistance() + "\t"+allStores[i].getTime());
-                }
+                
 
                 // Let the user pick his store
                 System.out.println("\nPick the number of the store you want\npress 0 if you want to sort the stores\n");
+                
+                
                 pick = inp.nextInt();
-
+                
+                while (pick>6 || pick<0){
+                    System.out.println("You selected a number out of bounds");
+                    displayStores();
+                    
+                    System.out.println("\nPick the number of the store you want\npress 0 if you want to sort the stores\n");
+                    pick = inp.nextInt();
+                }
         
                 if(pick == 0){
                     System.out.println("1)by price\t2)by time\t3)by rating\t4)dont sort");
@@ -151,19 +164,25 @@ public class Main {
             }            
 
             // Retrieve items, prices, and ratings for the selected store
-            itemss = allStores[pick-1].getItemNames();
-            pricess = allStores[pick-1].getPrices();
-            ratingss = allStores[pick-1].clothesRatings();
+            items = allStores[pick-1].getItemNames();
+            prices = allStores[pick-1].getPrices();
+            ratings = allStores[pick-1].clothesRatings();
 
             // Display a preview of the items at the selected store
             System.out.println("Here is a preview of the items at this store:");
             for(int i=0; i < allStores[pick-1].getItemNames().length; i++){
-                System.out.println(i+1 + ") " + itemss[i] + " " + pricess[i] + " Dollars " + ratingss[i] + " Stars");
+                System.out.println(i+1 + ") " + items[i] + " " + prices[i] + " Dollars " + ratings[i] + " Stars");
             }
 
             // Let the user decide if they want to go to the store or pick another store
-            System.out.println("1)Go to the store    2)Pick another store");  
+            System.out.println("1)Go to the store    2)Pick another store"); 
             choice = inp.nextInt();
+            while (choice>2||choice<1){
+                System.out.println("You selected a number out of bounds");
+                System.out.println("1)Go to the store    2)Pick another store"); 
+                choice = inp.nextInt();
+            } 
+            
         }
 
         // Update the selected store and deduct money and time
@@ -172,7 +191,7 @@ public class Main {
         timer -= allStores[pick-1].getTime();
 
         // Proceed to checkout
-        checkout(itemss, pricess, ratingss);
+        checkout(items, prices, ratings);
     }
 
     // Allow the user to checkout by buying items from the selected store
