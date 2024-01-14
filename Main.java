@@ -23,6 +23,9 @@ public class Main {
         System.out.println("Enter initial time: ");
         double initialTime = inp.nextDouble();
         timer = initialTime;
+        initializeTimer(initialTime);
+        
+        
         
 
         System.out.println("Welcome to kool 5ara.");
@@ -43,6 +46,26 @@ public class Main {
         System.out.println("congrats for finishing the game, your score is" + calculateScore()); 
 
     }
+
+    private static void initializeTimer(double initialTime) {
+        timer = initialTime;
+
+        // Create a thread to decrement the timer every minute
+        Thread timerThread = new Thread(() -> {
+            while (timer > 0) {
+                try {
+                    // Sleep for one minute
+                    Thread.sleep(60000);
+                    timer -= 1;  // Decrease the timer by 1 minute
+                    System.out.println("Time left: " + timer + " minutes");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        timerThread.start();
+    }
+
 
     private static double calculateScore() {
         double totalRating = 0;
