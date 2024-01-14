@@ -12,8 +12,10 @@ public class Main {
     static double timer;
     static double wallet;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         // User Initialization
+        ImageLoader image = new ImageLoader();
+        image.openImage();
         System.out.println("Enter initial money: ");
         double initialMoney = inp.nextDouble();
         wallet = initialMoney;

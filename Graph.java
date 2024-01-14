@@ -8,7 +8,7 @@ public class Graph {
     Edge[] timeEdges;
 
     public Graph(){
-        System.out.println("hello");
+        
     }
 
     private void bellmanFord(String src) {
