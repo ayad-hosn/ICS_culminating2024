@@ -141,11 +141,11 @@ public class Graph {
 
     
 
-    public double homeDistance(){
+    public double distanceFromHome(){
         return distances.get("home");
     }
 
-    public double homeTime(){
+    public double timeToHome(){
         return times.get("home");
     }
 

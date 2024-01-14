@@ -1,14 +1,15 @@
 import java.util.HashMap;
 
-class HandleStuff {
+class HandleStuff extends Graph{
     String type;
     double price;
     double rating;
     Store[] stores;
     String currStop = "home";
     HashMap<String, Store> storeNames = new HashMap<>();
-    Graph graph = new Graph();
+
     public HandleStuff() {
+        super();
         //name, storerating, names, prices, clothes rating
         Store store1 = new Store("High_Quality_Shirt", 4.2, new String[]{"black_shirt", "White_shirt", "Pink_shirt", "Green_shirt", "Orange_shirt"}, new double[]{30, 20, 30, 20, 15},new double[]{5, 5, 4, 4, 3});
         Store store2 = new Store("High_Quality_Pants", 4.1, new String[]{"short_pants","long_pants","black_jeans","blue_jeans","sweatpants"}, new double[]{30, 20, 30, 20, 15},new double[]{5, 4.5, 4, 4, 3});
@@ -30,21 +31,21 @@ class HandleStuff {
 
     public void updateStore(String name){
         currStop = name;
-        graph.setData(storeNames.get(currStop), stores);
+        setData(storeNames.get(currStop), stores);
     }
 
     public void setHome(){
-        graph.setData(stores);
-        System.out.println("hello");
+        setData(stores);
+        
     }
 
 
     public double homeDistance(){
-        return graph.homeDistance();
+        return distanceFromHome();
     }
 
     public double homeTime(){
-        return graph.homeTime();
+        return timeToHome();
     }
 
     
