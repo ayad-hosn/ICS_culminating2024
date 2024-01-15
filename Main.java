@@ -12,10 +12,11 @@ public class Main {
     static double timer;
     static double wallet;
 
-    public static void main(String[] args) throws Exception {
-        // User Initialization
-        
+    static boolean gameStat = true;
 
+    public static void main(String[] args) throws Exception {
+
+        // User Initialization
         System.out.println("\nWelcome to ayad and mehir's gaym.");
         System.out.println("This is a shopping game. You will be asked to pick an initial amount of time and money to start with,");
         System.out.println("as well as a recommended amount for each (you should go over the recommended amount for a better experience).");
@@ -33,7 +34,7 @@ public class Main {
         // Display user's initial balance
         System.out.println("\nIn your balance you have, "+ wallet + " dollars and you have " + timer +" minutes to spend it on buying a new wardrobe.");
         System.out.println("Please spend your money and time wisely to pick out the best wardrobe possible.");
-
+        
         // Prompt user to start the game
         Integer start = 0;
         while(start != 1){
@@ -47,34 +48,47 @@ public class Main {
             System.out.println("Would you like to 1)buy anything else      2)go home");
             start = inp.nextInt();
         }
+        gameStat = false;
 
         // Game over message with final score
+        
         System.out.println("Congratulations for finishing the game! Your score is " + calculateScore());
-
+        gameStat = false;
         // Reset the text file "my_closet.txt"
         try (FileWriter writer = new FileWriter("my_closet.txt", false)) {
             // Writing nothing to truncate the file
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.exit(0);
+        
     }
 
     // Initialize a timer thread to decrement timer every minute
-    private static void initializeTimer(double initialTime) {
+    private static void  initializeTimer(double initialTime) {
         timer = initialTime;
-
+        
         Thread timerThread = new Thread(() -> {
+            
             while (true) {
                 try {
                     Thread.sleep(60000); // Sleep for one minute
                     timer -= 1;  // Decrease the timer by 1 minute
-                    System.out.println("Time left: " + timer + " minutes");
+                    if (gameStat){
+                        System.out.println("Time left: " + timer + " minutes\tMoney left: " + wallet + " Dollars");
+                    }
+                    
+                    
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
         });
+
         timerThread.start();
+        
+        
+                
     }
 
     // Calculate and return the final score
