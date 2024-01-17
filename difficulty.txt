@@ -1,0 +1,7 @@
+Difficulty  wallet  timer
+
+easy: 200 150
+easy+: 175 75
+medium: 150 75
+hard: 125 75
+hard+: 100 50
