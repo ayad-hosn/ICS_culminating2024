@@ -1,46 +1,46 @@
 import java.util.HashMap;
 /* Graph class represents a graph with distances and times between nodes 
 */
-public class Graph {
+public class Map {
     // Hashmaps to store distances and times between stores
     HashMap<String, Double> distances = new HashMap<>();
     HashMap<String, Double> times = new HashMap<>();
     // Arrays to store edges of the nodes for both distances and times
-    Edge[] distanceEdges = new Edge[14];
-    Edge[] timeEdges = new Edge[14];
+    Road[] distanceEdges = new Road[14];
+    Road[] timeEdges = new Road[14];
 
-    public Graph(){
+    public Map(){
 
 ;
-        distanceEdges[0] = new Edge("home", "Quality_Shirts  ", 5);
-        distanceEdges[1] = new Edge("Quality_Shirts  ",  "home", 5);
-        distanceEdges[2] = new Edge("home",  "Quality_pants   ", 4);
-        distanceEdges[3] = new Edge("Quality_pants   ", "home", 4);
-        distanceEdges[4] = new Edge("Quality_Shirts  ", "Pants&Shirts    ", 3);
-        distanceEdges[5] = new Edge("Pants&Shirts    ", "Quality_Shirts  ", 3);
-        distanceEdges[6] = new Edge("Quality_pants   ", "Quality_Shirts  ", 6);
-        distanceEdges[7] = new Edge("Quality_Shirts  ", "Quality_pants   ", 6);
-        distanceEdges[8] = new Edge("Quality_pants   ", "Underwear_Store ", 5);
-        distanceEdges[9] = new Edge("Underwear_Store ", "Quality_pants   ", 5);
-        distanceEdges[10] = new Edge("Pants&Shirts    ", "Shoe_Store      ", 2);
-        distanceEdges[11] = new Edge("Shoe_Store      ", "Shoe_Store      ", 2);
-        distanceEdges[12] = new Edge("Underwear_Store ", "Everything_Store", 3);
-        distanceEdges[13] = new Edge("Everything_Store", "Underwear_Store ", 3);
+        distanceEdges[0] = new Road("home", "Quality_Shirts  ", 5);
+        distanceEdges[1] = new Road("Quality_Shirts  ",  "home", 5);
+        distanceEdges[2] = new Road("home",  "Quality_pants   ", 4);
+        distanceEdges[3] = new Road("Quality_pants   ", "home", 4);
+        distanceEdges[4] = new Road("Quality_Shirts  ", "Pants&Shirts    ", 3);
+        distanceEdges[5] = new Road("Pants&Shirts    ", "Quality_Shirts  ", 3);
+        distanceEdges[6] = new Road("Quality_pants   ", "Quality_Shirts  ", 6);
+        distanceEdges[7] = new Road("Quality_Shirts  ", "Quality_pants   ", 6);
+        distanceEdges[8] = new Road("Quality_pants   ", "Underwear_Store ", 5);
+        distanceEdges[9] = new Road("Underwear_Store ", "Quality_pants   ", 5);
+        distanceEdges[10] = new Road("Pants&Shirts    ", "Shoe_Store      ", 2);
+        distanceEdges[11] = new Road("Shoe_Store      ", "Shoe_Store      ", 2);
+        distanceEdges[12] = new Road("Underwear_Store ", "Everything_Store", 3);
+        distanceEdges[13] = new Road("Everything_Store", "Underwear_Store ", 3);
 
-        timeEdges[0] = new Edge("home", "Quality_Shirts  ", 10);
-        timeEdges[1] = new Edge("Quality_Shirts  ",  "home", 10);
-        timeEdges[2] = new Edge("home",  "Quality_pants   ", 3);
-        timeEdges[3] = new Edge("Quality_pants   ", "home", 3);
-        timeEdges[4] = new Edge("Quality_Shirts  ", "Pants&Shirts    ", 4);
-        timeEdges[5] = new Edge("Pants&Shirts    ", "Quality_Shirts  ", 4);
-        timeEdges[6] = new Edge("Quality_pants   ", "Quality_Shirts  ", 2);
-        timeEdges[7] = new Edge("Quality_Shirts  ", "Quality_pants   ", 2);
-        timeEdges[8] = new Edge("Quality_pants   ", "Underwear_Store ", 1);
-        timeEdges[9] = new Edge("Underwear_Store ", "Quality_pants   ", 1);
-        timeEdges[10] = new Edge("Pants&Shirts    ", "Shoe_Store      ", 9);
-        timeEdges[11] = new Edge("Shoe_Store      ", "Pants&Shirts    ", 9);
-        timeEdges[12] = new Edge("Underwear_Store ", "Everything_Store", 6);
-        timeEdges[13] = new Edge("Everything_Store", "Underwear_Store ", 6);
+        timeEdges[0] = new Road("home", "Quality_Shirts  ", 10);
+        timeEdges[1] = new Road("Quality_Shirts  ",  "home", 10);
+        timeEdges[2] = new Road("home",  "Quality_pants   ", 3);
+        timeEdges[3] = new Road("Quality_pants   ", "home", 3);
+        timeEdges[4] = new Road("Quality_Shirts  ", "Pants&Shirts    ", 4);
+        timeEdges[5] = new Road("Pants&Shirts    ", "Quality_Shirts  ", 4);
+        timeEdges[6] = new Road("Quality_pants   ", "Quality_Shirts  ", 2);
+        timeEdges[7] = new Road("Quality_Shirts  ", "Quality_pants   ", 2);
+        timeEdges[8] = new Road("Quality_pants   ", "Underwear_Store ", 1);
+        timeEdges[9] = new Road("Underwear_Store ", "Quality_pants   ", 1);
+        timeEdges[10] = new Road("Pants&Shirts    ", "Shoe_Store      ", 9);
+        timeEdges[11] = new Road("Shoe_Store      ", "Pants&Shirts    ", 9);
+        timeEdges[12] = new Road("Underwear_Store ", "Everything_Store", 6);
+        timeEdges[13] = new Road("Everything_Store", "Underwear_Store ", 6);
 
     }
 

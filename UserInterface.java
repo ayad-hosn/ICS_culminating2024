@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-public class Main {
+public class UserInterface {
     static Scanner inp = new Scanner(System.in);
-    static HandleStuff stuff = new HandleStuff();
+    static HandleStores stuff = new HandleStores();
     static Store[] allStores = stuff.getStores();
 
     static double timer;
@@ -153,7 +153,8 @@ public class Main {
                 
                 
                 pick = inp.nextInt();
-                
+
+                //keep index in bounds                
                 while (pick>6 || pick<0){
                     System.out.println("You selected a number out of bounds");
                     displayStores();
@@ -161,17 +162,20 @@ public class Main {
                     System.out.println("\nPick the number of the store you want\npress 0 if you want to sort the stores\n");
                     pick = inp.nextInt();
                 }
-        
+
+                //sorting method        
                 if(pick == 0){
                     System.out.println("1)by price\t2)by time\t3)by rating\t4)dont sort");
                     int sort = inp.nextInt();
 
+                    //keep index in bounds
                     while (!(sort<4&&sort>0)){
                         System.out.println("You entered a number out of bounds");
                         System.out.println("1)by price\t2)by time\t3)by rating\t4)dont sort");
                         sort = inp.nextInt();
                     }
 
+                    //sort options
                     if(sort == 1){
                         stuff.sortByDistance();
                     }else if(sort == 2){
