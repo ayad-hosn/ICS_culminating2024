@@ -3,7 +3,7 @@ import java.util.HashMap;
  *  The HandleStuff class extends the Graph class and 
  * manages stores and their information
  */
-class HandleStuff extends Graph{
+class HandleStores extends Map{
    
      
     //represents all the stores in an array
@@ -12,7 +12,7 @@ class HandleStuff extends Graph{
     String currStop = "home";
     HashMap<String, Store> storeNames = new HashMap<>();
 
-    public HandleStuff() {
+    public HandleStores() {
         super();
         //name, storerating, names, prices, clothes rating
         Store store1 = new Store("Quality_Shirts  ", 4.2, new String[]{"black_shirt", "White_shirt", "Pink_shirt", "Green_shirt", "Orange_shirt"}, new double[]{30, 20, 30, 20, 15},new double[]{5, 5, 4, 4, 3});
