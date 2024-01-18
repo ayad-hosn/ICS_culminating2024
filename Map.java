@@ -142,9 +142,9 @@ class Map {
      * @param allStores - array representing all the stores
      * used to update the distances from all the stores to the current store 
     */
-    protected void setData(Store start, Store[] allStores){
+    protected void setData(String start, Store[] allStores){
         //call the bellman ford method using the name for the current store
-        bellmanFord(start.toString());
+        bellmanFord(start);
         //update the distances and times from all the stores to the current stores
         //by looping through all stores
         for (int i=0;i<6;i++){
@@ -155,26 +155,9 @@ class Map {
         
     }
 
-    /* Overloaded method setData
-     *to set the distance 
-     * and time data for all stores from 'home' 
-     * @param allStores - the array containing all the instances of the stores
-     * @return void method returns nothing
-    */
-    protected void setData(Store[] allStores){
-        bellmanFord("home");
+    
         
-        for (int i=0;i<6;i++){
-            Store currStore = allStores[i];
-            
-            double currDistance = distances.get(currStore.toString());
-            
-            currStore.setDistance(currDistance);
-            currStore.setTime(times.get(currStore.toString()));
-
-        }
-        
-    }
+    
 
     
 
