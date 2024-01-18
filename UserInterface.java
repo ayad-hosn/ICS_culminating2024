@@ -91,7 +91,7 @@ public class UserInterface {
         String[] difficulties = {"easy", "easy+", "medium", "hard", "hard+", "extra hard"};
 
         while (pick > 6 || pick < 1) {
-            System.out.println("You selected a number out of bounds");
+            System.out.println("You selected a number out of bounds\n");
 
             fileHandler.displayDifficultyLevels();
             System.out.println("\nPick a difficulty level:");
@@ -102,6 +102,8 @@ public class UserInterface {
         wallet = fileHandler.getWallet();
         timer = fileHandler.getTimer();
     }
+
+
 
     /*
      * Method to get user input with error handling
@@ -114,7 +116,7 @@ public class UserInterface {
             try {
                 input = scanner.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("Error: You did not enter a valid option. Please try again.");
+                System.out.println("Error: You did not enter a valid integer. Please try again.");
                 scanner.next(); // discard the non-integer input
             }
         }
@@ -228,7 +230,7 @@ public class UserInterface {
             displayItems(items, prices, ratings);
 
             // offer user to travel to store or check other stores out
-            System.out.println("1)Go to the store    2)Pick another store");
+            System.out.println("\n1)Go to the store    2)Pick another store");
             choice = getInput();
             while (choice > 2 || choice < 1) {
                 System.out.println("You selected a number out of bounds");
@@ -258,7 +260,7 @@ public class UserInterface {
         System.out.println("Number\tItem\t\tPrice\t\tRating");
         for (int i = 0; i < items.length; i++) {
             System.out.println(
-                    i + 1 + ")\t" + items[i] + "\t" + prices[i] + "$\t" + ratings[i] + " Stars");
+                    i + 1 + ")\t" + items[i] + "\t" + prices[i] + "$\t\t" + ratings[i] + " Stars");
         }
     }
 
