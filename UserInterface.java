@@ -36,7 +36,7 @@ public class UserInterface {
         setDifficulty();
 
         // Initialize the timer
-        initializeTimer(timer);
+        initializeTimer();
 
         // Display user's initial balance
         System.out.println("\nIn your balance you have, " + wallet + "$ and you have " + timer + " minutes to spend it on buying a new wardrobe.");
@@ -125,7 +125,7 @@ public class UserInterface {
      * Method to initialize a timer thread to decrement timer every minute
      * @param initialTime Initial time value for the timer
      */
-    private static void initializeTimer(double initialTime) {
+    private static void initializeTimer() {
         // A thread to decrease the timer by 1 every minute created to run in the background. <3 
         Thread timerThread = new Thread(() -> {
             while (true) {
