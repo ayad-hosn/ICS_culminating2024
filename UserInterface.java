@@ -1,3 +1,9 @@
+/*
+ * This class displays the game for the user along 
+ * with implementing game mechanisms for the user to enjoy.
+ * love, ayad and mehir
+ */
+
 import java.util.Scanner;
 import java.util.InputMismatchException;
 
@@ -33,7 +39,7 @@ public class UserInterface {
         initializeTimer(timer);
 
         // Display user's initial balance
-        System.out.println("\nIn your balance you have, " + wallet + " dollars and you have " + timer + " minutes to spend it on buying a new wardrobe.");
+        System.out.println("\nIn your balance you have, " + wallet + "$ and you have " + timer + " minutes to spend it on buying a new wardrobe.");
         System.out.println("Please spend your money and time wisely to pick out the best wardrobe possible.");
 
         // Prompt user to start the game
@@ -46,12 +52,16 @@ public class UserInterface {
         // Main game loop
         while (start == 1) {
             visitStores();
-            System.out.println("Would you like to 1)buy anything else      2)go home");
+            
+            System.out.println("Wallet: " + wallet + "\tTimer: " + timer);
+            System.out.println("\nWould you like to 1)buy anything else      2)go home");
+
             start = getInput();
         }
 
         // Game over message with final score
         System.out.println("Congratulations for finishing the game! Your score is " + fileHandler.calculateScore(wallet,timer));
+        System.out.println("\nWe love you miss xin, can we please have a 100/100");
 
         // Reset the text file "my_closet.txt"
         fileHandler.emptyCloset();
@@ -116,13 +126,16 @@ public class UserInterface {
      * @param initialTime Initial time value for the timer
      */
     private static void initializeTimer(double initialTime) {
+        // A thread to decrease the timer by 1 every minute created to run in the background. <3 
         Thread timerThread = new Thread(() -> {
             while (true) {
                 try {
                     Thread.sleep(60000); // Sleep for one minute
                     timer -= 1; // Decrease the timer by 1 minute
 
-                    System.out.println("Time left: " + timer + " minutes\tMoney left: " + wallet + " Dollars");
+                    // every real life minute print this message 
+                    System.out.println("\nThis is an automatic time reminder that occurs every minute");
+                    System.out.println("Time left: " + timer + " mins\t\tMoney left: " + wallet + "$\n");
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -190,8 +203,8 @@ public class UserInterface {
                     System.out.println("1)by distance(costs $1/unit of distance traveled)\t2)by time\t3)by rating\t4)don't sort");
                     int sort = getInput();
 
-                    // make sureindex out of bounds 
-                    while (!(sort < 4 && sort > 0)) {
+                    // make sure index not out of bounds 
+                    while (!(sort < 5 && sort > 0)) {
                         System.out.println("You entered a number out of bounds");
                         System.out.println("1)by distance(costs $1/unit of distance traveled)\t2)by time\t3)by rating\t4)don't sort");
                         sort = getInput();
@@ -244,7 +257,7 @@ public class UserInterface {
         System.out.println("Number\tItem\t\tPrice\t\tRating");
         for (int i = 0; i < items.length; i++) {
             System.out.println(
-                    i + 1 + ")\t" + items[i] + "\t" + prices[i] + " Dollars\t" + ratings[i] + " Stars");
+                    i + 1 + ")\t" + items[i] + "\t" + prices[i] + "$\t" + ratings[i] + " Stars");
         }
     }
 
@@ -278,7 +291,6 @@ public class UserInterface {
             // deduct costs from wallet
             wallet -= prices[buy - 1];
             System.out.println("\nYou have bought " + items[buy - 1]);
-            System.out.println("Wallet: " + wallet + "\tTimer: " + timer);
 
             //put the stuff the user bought in an inventory
             fileHandler.writeClosetToFile(items[buy - 1], prices[buy - 1], ratings[buy - 1]);
