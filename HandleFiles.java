@@ -1,3 +1,8 @@
+/* 
+ *  The HandleFiles class has methods that control 
+ * the reading and writing of a file parts of this program
+ */
+
 import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.IOException;
@@ -5,34 +10,36 @@ import java.io.BufferedReader;
 
 public class HandleFiles {
 
+    double wallet = 0;
+    double timer = 0;
 
-public double calculateScore(double money, double time) {
+    public double calculateScore(double money, double time) {
+    
+        double totalRating = 0;
+        int itemCount = 0; // Track the number of items
 
-    double totalRating = 0;
-    int itemCount = 0; // Track the number of items
-
-    try (BufferedReader reader = new BufferedReader(new FileReader("my_closet.txt"))) {
-        String line;
-        int count = 0;
-        while ((line = reader.readLine()) != null) {
-            if (count != 0) {
-                String[] parts = line.split(" ");
-                if (parts.length == 3) {
-                    double itemRating = Double.parseDouble(parts[2]);
-                    totalRating += itemRating;
-                    itemCount++;
+        try (BufferedReader reader = new BufferedReader(new FileReader("my_closet.txt"))) {
+            String line;
+            int count = 0;
+            while ((line = reader.readLine()) != null) {
+                if (count != 0) {
+                    String[] parts = line.split(" ");
+                    if (parts.length == 3) {
+                        double itemRating = Double.parseDouble(parts[2]);
+                        totalRating += itemRating;
+                        itemCount++;
+                    }
                 }
+                count++;
             }
-            count++;
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        reader.close();
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
 
-    double avgRating = (itemCount > 0) ? totalRating / itemCount : 0; // Avoid division by zero
-    double score = (avgRating / 3) + (money / 3) + (time / 3);
-    return score;
+        double avgRating = (itemCount > 0) ? totalRating / itemCount : 0; // Avoid division by zero
+        double score = (avgRating / 3) + (money / 3) + (time / 3);
+        return Math.round(score * 100.0) / 100.0;
     }
 
     public void emptyCloset(){
@@ -45,7 +52,7 @@ public double calculateScore(double money, double time) {
     } catch (IOException e) {
         e.printStackTrace();
     }
-    System.exit(0);
+    
     }
 
     public void writeClosetToFile(String name, double cost, double stars) {
@@ -61,8 +68,13 @@ public double calculateScore(double money, double time) {
     public void displayDifficultyLevels() {
     try (BufferedReader reader = new BufferedReader(new FileReader("difficulty.txt"))) {
         String line;
+        int count = 0;
         while ((line = reader.readLine()) != null) {
+            if (count>1){
+                System.out.print((count-1)+". ");
+            }
             System.out.println(line);
+            count++;
         }
     } catch (IOException e) {
         e.printStackTrace();
@@ -70,7 +82,7 @@ public double calculateScore(double money, double time) {
     }
 
     // Read wallet and timer values from the difficulty file based on the selected difficulty level
-    public boolean readDifficultyFromFile(String selectedDifficulty, double wallet, double timer) {
+    public void readDifficultyFromFile(String selectedDifficulty) {
     try (BufferedReader reader = new BufferedReader(new FileReader("difficulty.txt"))) {
         String line;
         while ((line = reader.readLine()) != null) {
@@ -79,10 +91,10 @@ public double calculateScore(double money, double time) {
                 String difficulty = parts[0].trim().toLowerCase();
                 if (difficulty.equals(selectedDifficulty)) {
                     String[] values = parts[1].trim().split(" ");
-                    if (values.length == 2) {
-                        wallet = Double.parseDouble(values[0]);
-                        timer = Double.parseDouble(values[1]);
-                        return true;
+                    if (values.length == 6) {
+                        this.wallet = Double.parseDouble(values[0]);
+                        this.timer = Double.parseDouble(values[5]);
+                        
                     }
                 }
             }
@@ -90,6 +102,14 @@ public double calculateScore(double money, double time) {
     } catch (IOException e) {
         e.printStackTrace();
     }
-    return false;
+    
+    }
+
+    public double getWallet(){
+        return wallet;
+    }
+
+    public double getTimer(){
+        return timer;
     }
 }
