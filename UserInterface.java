@@ -73,7 +73,7 @@ public class UserInterface {
      * Method to get an array of Store objects
      * @return Array of Store objects representing all stores
      */
-    public static Store[] getStores() {
+    private static Store[] getStores() {
         // Array to store all stores
         Store[] allStores = storeHandler.getStores();
         return allStores;
@@ -152,7 +152,7 @@ public class UserInterface {
      * get the stores from store.java and display them using 
      * the while loop to go through all the items in that array.
      */
-    public static void displayStores() {
+    private static void displayStores() {
         Store[] allStores = getStores();
         System.out.println("These are all the stores along with the costs to get there:\n");
         System.out.println("Number\tStore_Name\t\tRating\tPrice\tTime");
