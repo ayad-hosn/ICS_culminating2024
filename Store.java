@@ -36,7 +36,7 @@ class Store {
     
     /* Getter method for the time distance between stores
      * @return the time it takes to get from this store to the
-     *store is the user is at 
+     * store is the user is at 
     */
     
     double getTime(){
@@ -45,7 +45,7 @@ class Store {
 
     /* Getter method for the distance between stores
      * @return the distance to get from this store to the
-     *store is the user is at 
+     * store is the user is at 
     */
     double getDistance(){
         return distance;
