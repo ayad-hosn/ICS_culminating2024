@@ -1,7 +1,9 @@
-import java.util.HashMap;
-/* Graph class represents a graph with distances and times between nodes 
+/* Map class represents a graph with distances and times between the stores 
 */
-public class Map {
+
+import java.util.HashMap;
+
+class Map {
     // Hashmaps to store distances and times between stores
     HashMap<String, Double> distances = new HashMap<>();
     HashMap<String, Double> times = new HashMap<>();
@@ -11,36 +13,36 @@ public class Map {
 
     public Map(){
 
-;
-        distanceEdges[0] = new Road("home", "Quality_Shirts  ", 5);
-        distanceEdges[1] = new Road("Quality_Shirts  ",  "home", 5);
-        distanceEdges[2] = new Road("home",  "Quality_pants   ", 4);
-        distanceEdges[3] = new Road("Quality_pants   ", "home", 4);
-        distanceEdges[4] = new Road("Quality_Shirts  ", "Pants&Shirts    ", 3);
-        distanceEdges[5] = new Road("Pants&Shirts    ", "Quality_Shirts  ", 3);
-        distanceEdges[6] = new Road("Quality_pants   ", "Quality_Shirts  ", 6);
-        distanceEdges[7] = new Road("Quality_Shirts  ", "Quality_pants   ", 6);
-        distanceEdges[8] = new Road("Quality_pants   ", "Underwear_Store ", 5);
-        distanceEdges[9] = new Road("Underwear_Store ", "Quality_pants   ", 5);
-        distanceEdges[10] = new Road("Pants&Shirts    ", "Shoe_Store      ", 2);
-        distanceEdges[11] = new Road("Shoe_Store      ", "Shoe_Store      ", 2);
-        distanceEdges[12] = new Road("Underwear_Store ", "Everything_Store", 3);
-        distanceEdges[13] = new Road("Everything_Store", "Underwear_Store ", 3);
 
-        timeEdges[0] = new Road("home", "Quality_Shirts  ", 10);
-        timeEdges[1] = new Road("Quality_Shirts  ",  "home", 10);
-        timeEdges[2] = new Road("home",  "Quality_pants   ", 3);
-        timeEdges[3] = new Road("Quality_pants   ", "home", 3);
-        timeEdges[4] = new Road("Quality_Shirts  ", "Pants&Shirts    ", 4);
-        timeEdges[5] = new Road("Pants&Shirts    ", "Quality_Shirts  ", 4);
-        timeEdges[6] = new Road("Quality_pants   ", "Quality_Shirts  ", 2);
-        timeEdges[7] = new Road("Quality_Shirts  ", "Quality_pants   ", 2);
-        timeEdges[8] = new Road("Quality_pants   ", "Underwear_Store ", 1);
-        timeEdges[9] = new Road("Underwear_Store ", "Quality_pants   ", 1);
-        timeEdges[10] = new Road("Pants&Shirts    ", "Shoe_Store      ", 9);
-        timeEdges[11] = new Road("Shoe_Store      ", "Pants&Shirts    ", 9);
-        timeEdges[12] = new Road("Underwear_Store ", "Everything_Store", 6);
-        timeEdges[13] = new Road("Everything_Store", "Underwear_Store ", 6);
+        this.distanceEdges[0] = new Road("home", "Quality_Shirts  ", 5);
+        this.distanceEdges[1] = new Road("Quality_Shirts  ",  "home", 5);
+        this.distanceEdges[2] = new Road("home",  "Quality_pants   ", 4);
+        this.distanceEdges[3] = new Road("Quality_pants   ", "home", 4);
+        this.distanceEdges[4] = new Road("Quality_Shirts  ", "Pants&Shirts    ", 3);
+        this.distanceEdges[5] = new Road("Pants&Shirts    ", "Quality_Shirts  ", 3);
+        this.distanceEdges[6] = new Road("Quality_pants   ", "Quality_Shirts  ", 6);
+        this.distanceEdges[7] = new Road("Quality_Shirts  ", "Quality_pants   ", 6);
+        this.distanceEdges[8] = new Road("Quality_pants   ", "Underwear_Store ", 5);
+        this.distanceEdges[9] = new Road("Underwear_Store ", "Quality_pants   ", 5);
+        this.distanceEdges[10] = new Road("Pants&Shirts    ", "Shoe_Store      ", 2);
+        this.distanceEdges[11] = new Road("Shoe_Store      ", "Shoe_Store      ", 2);
+        this.distanceEdges[12] = new Road("Underwear_Store ", "Everything_Store", 3);
+        this.distanceEdges[13] = new Road("Everything_Store", "Underwear_Store ", 3);
+
+        this.timeEdges[0] = new Road("home", "Quality_Shirts  ", 10);
+        this.timeEdges[1] = new Road("Quality_Shirts  ",  "home", 10);
+        this.timeEdges[2] = new Road("home",  "Quality_pants   ", 3);
+        this.timeEdges[3] = new Road("Quality_pants   ", "home", 3);
+        this.timeEdges[4] = new Road("Quality_Shirts  ", "Pants&Shirts    ", 4);
+        this.timeEdges[5] = new Road("Pants&Shirts    ", "Quality_Shirts  ", 4);
+        this.timeEdges[6] = new Road("Quality_pants   ", "Quality_Shirts  ", 2);
+        this.timeEdges[7] = new Road("Quality_Shirts  ", "Quality_pants   ", 2);
+        this.timeEdges[8] = new Road("Quality_pants   ", "Underwear_Store ", 1);
+        this.timeEdges[9] = new Road("Underwear_Store ", "Quality_pants   ", 1);
+        this.timeEdges[10] = new Road("Pants&Shirts    ", "Shoe_Store      ", 9);
+        this.timeEdges[11] = new Road("Shoe_Store      ", "Pants&Shirts    ", 9);
+        this.timeEdges[12] = new Road("Underwear_Store ", "Everything_Store", 6);
+        this.timeEdges[13] = new Road("Everything_Store", "Underwear_Store ", 6);
 
     }
 
@@ -139,7 +141,7 @@ public class Map {
      * @param allStores - array representing all the stores
      * used to update the distances from all the stores to the current store 
     */
-    public void setData(Store start, Store[] allStores){
+    protected void setData(Store start, Store[] allStores){
         //call the bellman ford method using the name for the current store
         bellmanFord(start.toString());
         //update the distances and times from all the stores to the current stores
@@ -157,7 +159,7 @@ public class Map {
      * @param allStores the array containing all the instances of the stores
      * @return void method returns nothing
     */
-    public void setData(Store[] allStores){
+    protected void setData(Store[] allStores){
         bellmanFord("home");
         
         for (int i=0;i<6;i++){

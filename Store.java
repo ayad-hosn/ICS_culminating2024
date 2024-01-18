@@ -13,7 +13,7 @@ class Store {
     double[] prices;
     double[] clothesRatings;
     
-    public Store(String name, double storeRating, String[] names, double[]prices, double[]clothesRatings) {
+    Store(String name, double storeRating, String[] names, double[]prices, double[]clothesRatings) {
         this.name = name;
         
         this.storeRating = storeRating;
@@ -24,7 +24,7 @@ class Store {
     }
 
 
-    public void buildHashMap(){
+    void buildHashMap(){
         int size = names.length;
         for (int i=0;i<size;i++){
             clothes.put(names[i], new double[]{clothesRatings[i],prices[i]});
@@ -32,37 +32,37 @@ class Store {
 
     }
 
-    public double getTime(){
+    double getTime(){
         return time;
     }
 
 
-    public double getDistance(){
+    double getDistance(){
         return distance;
     }
 
-    public String[] getItemNames(){
+    String[] getItemNames(){
         return names;
     }
 
-    public double[] getPrices(){
+    double[] getPrices(){
         return prices;
     }
 
-    public double[] clothesRatings(){
+    double[] clothesRatings(){
         return clothesRatings;
     }
 
-    public void setTime(double time){
+    void setTime(double time){
         this.time = time;
     }
 
-    public void setDistance(double distance){
+    void setDistance(double distance){
         this.distance = distance;
     }
 
 
-    public double getRating(){
+    double getRating(){
         return storeRating;
     }
 

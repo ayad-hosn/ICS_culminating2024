@@ -7,7 +7,7 @@ public class Road {
     /* Constructor to initialize an Edge object with 
      * the provided source, destination, and weight 
     */
-    public Road(String source, String destination, double weight) {
+    Road(String source, String destination, double weight) {
         this.source = source; // Set the source node of the edge
         this.destination = destination; // Set the destination node of the edge
         this.weight = weight; // Set the weight (cost, distance, time, etc.) of the edge
