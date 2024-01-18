@@ -33,7 +33,7 @@ public class UserInterface {
         System.out.println("\nFun Fact!\nThe shortest distances and times to travel between stores is calculated using the bellman ford algorithm. Edge list representation is used to store the graph of the roads!");
         System.out.println("\nThis is a shopping game. You will be asked to pick a difficulty level, which will determine your initial amount of time and money to start with.\n");
 
-        getDifficulty();
+        setDifficulty();
 
         // Initialize the timer
         initializeTimer(timer);
@@ -81,7 +81,7 @@ public class UserInterface {
     /*
      * Method for the user to pick the difficulty level
      */
-    private static void getDifficulty() {
+    private static void setDifficulty() {
         fileHandler.displayDifficultyLevels();
         System.out.println("\nPick a difficulty level:");
 
