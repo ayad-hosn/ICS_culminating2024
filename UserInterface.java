@@ -255,10 +255,12 @@ public class UserInterface {
      * @param ratings Array of item ratings
      */
     private static void checkout(String[] items, double[] prices, double[] ratings) {
+
         int stay = 1;
 
         // while the user wants to stay in the store
         while (stay == 1) {
+
             System.out.println("\nBudget: " + wallet + "\tTime: " + timer);
             System.out.println("\nWelcome to the store! Here are the available items:\n");
 

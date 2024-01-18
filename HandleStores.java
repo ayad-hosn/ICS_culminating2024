@@ -12,6 +12,8 @@ class HandleStores extends Map{
     Store[] stores;
     //represents the store that the user is currently in
     String currStop = "home";
+    //this hashmap is used to quickly match the store name to the instance of the store
+
     HashMap<String, Store> storeNames = new HashMap<>();
 
     HandleStores() {
@@ -26,6 +28,7 @@ class HandleStores extends Map{
         Store store6 = new Store("Everything_Store", 3.0, new String[]{"jeans\t", "chinos\t", "t-shirt\t", "polo_shirt", "sneakers", "loafers\t", "boxer_briefs", "briefs\t"}, new double[]{40, 30, 20, 25, 50, 60, 15, 18}, new double[]{4, 3.5, 3.8, 3.9, 4.5, 4.2, 4, 3.5});
         //initialize the array with all the stores we just created
         this.stores = new Store[]{store1, store2, store3, store4, store5, store6};
+        //assign each store name its instance in the hashmap
         this.storeNames.put("Quality_Shirts  ", store1);
         this.storeNames.put("Quality_pants   ", store2);
         this.storeNames.put("Pants&Shirts    ", store3);
@@ -37,6 +40,7 @@ class HandleStores extends Map{
         //this method is called when the instance of this class is created
         setData(stores); 
     }           
+    
     /* Updates the current stop and 
     sets the data for the graph based on the store name 
     @param name - name of the store
