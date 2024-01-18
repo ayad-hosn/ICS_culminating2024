@@ -47,8 +47,8 @@ class Map {
     }
 
     /* Bellman-Ford algorithm to find shortest paths from a source node
-     * @params the source of the graph
-     * The source is the node that the user is currently at
+     * @params src - the source node of the graph
+     * The source is the store that the user is currently at
      */
     private void bellmanFord(String src) {
         // Initialize all distances to infinity (maximum value)
@@ -136,6 +136,7 @@ class Map {
     
     /* Method to set the distance and time data for a 
      * specific starting store and all stores
+     * Overloaded method setData()
      * @param start - represents the source of the graph or in other terms
      * the store or location the user is in current
      * @param allStores - array representing all the stores
@@ -154,9 +155,10 @@ class Map {
         
     }
 
-    /* Overloaded method to set the distance 
+    /* Overloaded method setData
+     *to set the distance 
      * and time data for all stores from 'home' 
-     * @param allStores the array containing all the instances of the stores
+     * @param allStores - the array containing all the instances of the stores
      * @return void method returns nothing
     */
     protected void setData(Store[] allStores){

@@ -250,7 +250,7 @@ public class UserInterface {
     // Allow the user to checkout by buying items from the selected store
     private static void checkout(String[] items, double[] prices, double[] ratings) {
         int buy2 = 1;
-
+            
         while (buy2 == 1) {
             System.out.println("\nBudget: " + wallet + "\tTime: " + timer);
             System.out.println("\nWelcome to the store! Here are the available items:\n");
