@@ -179,25 +179,7 @@ class Map {
     
 
 
-    /* Method to get the distance 
-     * from 'home' to the current store 
-     * @param none
-     * @return returns the distance from home to the current store 
-    */
-
-    public double distanceFromHome(){
-        return distances.get("home");
-    }
-
-    /* Method to get the time 
-     * from 'home' to the current store 
-     * @param none
-     * @return returns the time from home to the current store 
-    */
-    public double timeToHome(){
-        return times.get("home");
-    }
-
+   
     
 
     
