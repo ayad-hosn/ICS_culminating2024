@@ -65,6 +65,7 @@ public class UserInterface {
 
         // Reset the text file "my_closet.txt"
         fileHandler.emptyCloset();
+        //stop all threads including the timer thread
         System.exit(0);
     }
 
