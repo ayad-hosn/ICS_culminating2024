@@ -1,4 +1,6 @@
-// The Edge class represents an edge in a graph with a source, destination, and weight
+/* The Road class represents a road connecting two stores
+ * Every road has a source, destination, and weight 
+ */
 public class Road {
     // Variables to store the source node, destination node, and weight of the edge
     String source, destination;
