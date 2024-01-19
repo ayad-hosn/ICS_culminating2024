@@ -5,22 +5,22 @@
 */
 class Store {
     //name of store
-    String name;
+    private String name;
     //distance to the store the user is at currently from this store
-    double distance;
+    private double distance;
     //time to the store the user is at currently from this store
-    double time;
+    private double time;
     //the rating of the store
-    double storeRating;
+    private double storeRating;
     
     //array containing all clothes names in order
-    String[] names;
+    private String[] names;
     //array containing all prices in the same order as names
-    double[] prices;
+    private double[] prices;
     //array containing all clothes ratings in the same order names
-    double[] clothesRatings;
+    private double[] clothesRatings;
     //2d array storing prices and clothes ratings
-    double pricesRatings[][];
+    private double pricesRatings[][];
     Store(String name, double storeRating, String[] names, double[]prices, double[]clothesRatings) {
         this.name = name;
         
