@@ -9,17 +9,17 @@ import java.util.InputMismatchException;
 
 public class UserInterface {
     // Scanner for user input
-    static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     // HandleStores instance to manage store-related operations
-    static HandleStores storeHandler = new HandleStores();
+    private static final HandleStores storeHandler = new HandleStores();
 
     // HandleFiles instance to manage file writing/reading operations
-    static HandleFiles fileHandler = new HandleFiles();
+    private static final HandleFiles fileHandler = new HandleFiles();
 
     // Variables to track time, wallet, and game status
-    static double timer;
-    static double wallet;
+    private static double timer;
+    private static double wallet;
 
     /*
      * Main method to run the game
