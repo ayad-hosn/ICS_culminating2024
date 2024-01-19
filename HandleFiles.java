@@ -10,10 +10,10 @@ import java.io.BufferedReader;
 
 public class HandleFiles {
 
-    double wallet = 0;
-    double timer = 0;
+    private double wallet = 0;
+    private double timer = 0;
 
-    public double calculateScore(double money, double time) {
+    double calculateScore(double money, double time) {
     
         double totalRating = 0;
         int itemCount = 0; // Track the number of items
@@ -42,7 +42,7 @@ public class HandleFiles {
         return Math.round(score * 100.0) / 100.0;
     }
 
-    public void emptyCloset(){
+    void emptyCloset(){
     try (FileWriter writer = new FileWriter("my_closet.txt", false)) {
         FileWriter newWriter = new FileWriter("my_closet.txt", true);
         newWriter.write("Item_Name Price Rating\n");
@@ -55,7 +55,7 @@ public class HandleFiles {
     
     }
 
-    public void writeClosetToFile(String name, double cost, double stars) {
+    void writeClosetToFile(String name, double cost, double stars) {
     try (FileWriter writer = new FileWriter("my_closet.txt", true)) {
         writer.write(name + " " + cost + " " + stars + "\n");
     } catch (IOException e) {
@@ -65,7 +65,7 @@ public class HandleFiles {
 
 
     // Display available difficulty levels
-    public void displayDifficultyLevels() {
+    void displayDifficultyLevels() {
     try (BufferedReader reader = new BufferedReader(new FileReader("difficulty.txt"))) {
         String line;
         int count = 0;
@@ -82,7 +82,7 @@ public class HandleFiles {
     }
 
     // Read wallet and timer values from the difficulty file based on the selected difficulty level
-    public void readDifficultyFromFile(String selectedDifficulty) {
+    void readDifficultyFromFile(String selectedDifficulty) {
     try (BufferedReader reader = new BufferedReader(new FileReader("difficulty.txt"))) {
         String line;
         while ((line = reader.readLine()) != null) {
@@ -105,11 +105,11 @@ public class HandleFiles {
     
     }
 
-    public double getWallet(){
+    double getWallet(){
         return wallet;
     }
 
-    public double getTimer(){
+    double getTimer(){
         return timer;
     }
 }
