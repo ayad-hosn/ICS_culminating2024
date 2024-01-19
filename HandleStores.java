@@ -9,12 +9,12 @@ class HandleStores extends Map{
    
      
     //represents all the stores in an array
-    Store[] stores;
+    private Store[] stores;
     //represents the store that the user is currently in
-    String currStop = "home";
+    private String currStop = "home";
     //this hashmap is used to quickly match the store name to the instance of the store
 
-    HashMap<String, Store> storeNames = new HashMap<>();
+    private HashMap<String, Store> storeNames = new HashMap<>();
 
     HandleStores() {
         //call the constructor of the map class
