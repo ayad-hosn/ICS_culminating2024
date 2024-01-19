@@ -1,2 +1,1 @@
 Item_Name Price Rating
-short_pants 30.0 5.0

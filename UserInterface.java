@@ -65,6 +65,7 @@ public class UserInterface {
 
         // Reset the text file "my_closet.txt"
         fileHandler.emptyCloset();
+        fileHandler.emptyDiff();
         //stop all threads including the timer thread
         System.exit(0);
     }
@@ -84,20 +85,34 @@ public class UserInterface {
      */
     private static void setDifficulty() {
         fileHandler.displayDifficultyLevels();
+        
         System.out.println("\nPick a difficulty level:");
 
         int pick = getInput();
 
-        String[] difficulties = {"easy", "easy+", "medium", "hard", "hard+", "extra hard"};
+        String[] difficulties = {"easy", "easy+", "medium", "hard", "hard+", "custom"};
+
+
 
         while (pick > 6 || pick < 1) {
-            System.out.println("You selected a number out of bounds\n");
 
+
+            System.out.println("You selected a number out of bounds\n");
+            
             fileHandler.displayDifficultyLevels();
             System.out.println("\nPick a difficulty level:");
 
             pick = getInput();
         }
+        if (pick == 6){
+            System.out.print("Enter the starting money: ");
+            int startingMoney = getInput();
+            
+            System.out.print("Enter the starting time: ");
+            int startingTime = getInput();
+            fileHandler.setCustom(startingMoney, startingTime);
+        }
+
         fileHandler.readDifficultyFromFile(difficulties[pick-1]);
         wallet = fileHandler.getWallet();
         timer = fileHandler.getTimer();
