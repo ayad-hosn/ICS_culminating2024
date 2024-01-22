@@ -50,7 +50,7 @@ class HandleStores extends Map{
       
         currStop = name; // Update the current stop to the given store name
         setData(currStop, stores); // Set the graph data for the current stop
-
+         
     }
 
     

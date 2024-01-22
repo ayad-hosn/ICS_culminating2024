@@ -5,11 +5,11 @@ import java.util.HashMap;
 
 class Map {
     // Hashmaps to store distances and times between stores
-    HashMap<String, Double> distances = new HashMap<>();
-    HashMap<String, Double> times = new HashMap<>();
+    private HashMap<String, Double> distances = new HashMap<>();
+    private HashMap<String, Double> times = new HashMap<>();
     // Arrays to store edges of the nodes for both distances and times
-    Road[] distanceEdges = new Road[14];
-    Road[] timeEdges = new Road[14];
+    private Road[] distanceEdges = new Road[14];
+    private Road[] timeEdges = new Road[14];
 
     public Map(){
 
