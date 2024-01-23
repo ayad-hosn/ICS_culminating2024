@@ -2,6 +2,8 @@
  * The Store class represents a store with various attributes and methods.
  * Each store has a name, distance from the user's current location, time to 
  * reach from the user's current location, and a store rating.
+ * 
+ * @author Mehir Narayana
 */
 class Store {
     //name of store
@@ -84,7 +86,7 @@ class Store {
     }
 
     /* Setter method for the clothes names
-     * @param time - the time it takes to get from this store
+     * @param time - the distance it takes to get from this store
      * to the store is the user is currently at
     */
     void setDistance(double distance){
