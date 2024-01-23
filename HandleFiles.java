@@ -71,9 +71,31 @@ public class HandleFiles {
         }
     }
 
+
+    void emptyDiff(){
+        try (FileWriter writer = new FileWriter("difficulty.txt", false)) {
+            FileWriter newWriter = new FileWriter("difficulty.txt", true);
+            newWriter.write("Difficulty  wallet  timer");
+            newWriter.write("\n\neasy:       200     150");
+            newWriter.write("\neasy+:      175     75");
+            newWriter.write("\nmedium:     150     75");
+            newWriter.write("\nhard:       125     75");
+            newWriter.write("\nhard+:      100     50\n");
+            writer.close();
+            newWriter.close();
+            // Writing nothing to truncate the file
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        }
+
+    // Display available difficulty levels
+
     /*
      * Display available difficulty levels from the difficulty file
      */
+
     void displayDifficultyLevels() {
         try (BufferedReader reader = new BufferedReader(new FileReader("difficulty.txt"))) {
             String line;
@@ -88,6 +110,12 @@ public class HandleFiles {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println("6. custom");
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+
     }
 
     /*
@@ -129,5 +157,14 @@ public class HandleFiles {
      */
     double getTimer() {
         return timer;
+    }
+
+
+    void setCustom(int wallet, int timer){
+        try (FileWriter writer = new FileWriter("difficulty.txt", true)) {
+            writer.write("Custom:     " + wallet + "     "+timer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
